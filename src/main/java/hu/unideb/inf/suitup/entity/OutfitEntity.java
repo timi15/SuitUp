@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "outfits")
-public class Outfit {
+public class OutfitEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,5 +33,16 @@ public class Outfit {
 
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    @ManyToMany
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "outfit_id"),
+            inverseJoinColumns = @JoinColumn(name ="wardrobe_id")
+    )
+    private List<WardrobeItemEntity> wardrobeItems;
 
 }
