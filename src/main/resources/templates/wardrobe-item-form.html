@@ -13,7 +13,7 @@
 
     <h1>Új ruhadarab feltöltése</h1>
 
-    <form th:action="@{/wardrobe-item/save}" th:object="${wardrobeItem}" method="post">
+    <form th:action="@{/wardrobe-items/save}" th:object="${wardrobeItem}" method="post">
         <div>
             <label for="imageUrl" class="form-label">Ruhadarab képének linkje</label>
             <input type="text" class="form-control" id="imageUrl" th:field="*{imageUrl}"  placeholder="pl.: https://példa.hu/ruha.png">

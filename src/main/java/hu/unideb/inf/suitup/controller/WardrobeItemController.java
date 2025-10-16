@@ -10,31 +10,36 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/wardrobe-items")
 public class WardrobeItemController {
 
     final WardrobeItemService wardrobeItemService;
 
-    @GetMapping("/wardrobe-item/save-form")
-    public String showUploadWardrobeItemForm(Model model){
-        model.addAttribute("wardrobeItem", new WardrobeItemEntity());
-        //TODO: HTML page
-        return "wardrobe-item-form.html";
+    @GetMapping("")
+    public String wardrobeItemsPage(Model model){
+        model.addAttribute("wardrobeItems", wardrobeItemService.findAll());
+        return "wardrobe-items";
     }
 
-    @PostMapping("/wardrobe-item/save")
+    @GetMapping("/save")
+    public String showUploadWardrobeItemForm(Model model){
+        model.addAttribute("wardrobeItem", new WardrobeItemEntity());
+        return "wardrobe-item-form";
+    }
+
+    @PostMapping("/save")
     public String saveWardrobeItem(
             @Valid @ModelAttribute("wardrobeItem") WardrobeItemEntity wardrobeItemEntity,
             BindingResult bindingResult
     ){
         if(bindingResult.hasErrors()){
-            //TODO: HTML page
-            return "wardrobe-item-form.html";
+            return "wardrobe-item-form";
         }
         wardrobeItemService.save(wardrobeItemEntity);
-        //TODO: HTML page
-        return "redirect:/";
+        return "redirect:/wardrobe-items";
     }
 }
