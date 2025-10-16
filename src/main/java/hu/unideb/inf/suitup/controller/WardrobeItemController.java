@@ -21,7 +21,7 @@ public class WardrobeItemController {
     public String showUploadWardrobeItemForm(Model model){
         model.addAttribute("wardrobeItem", new WardrobeItemEntity());
         //TODO: HTML page
-        return "";
+        return "wardrobe-item-form.html";
     }
 
     @PostMapping("/wardrobe-item/save")
@@ -31,7 +31,7 @@ public class WardrobeItemController {
     ){
         if(bindingResult.hasErrors()){
             //TODO: HTML page
-            return "";
+            return "wardrobe-item-form.html";
         }
         wardrobeItemService.save(wardrobeItemEntity);
         //TODO: HTML page
