@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Ruhadarabjaim</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -21,11 +22,11 @@
                 <img th:src="${item.imageUrl}" class="card-img-top" th:alt="${item.type}">
                 <div class="card-body">
                     <p class="card-text mb-1">
-                        <strong th:text="${item.type}"></strong><br>
-                        <strong th:text="${item.color}"></strong><br>
-                        <strong th:text="${item.season}"></strong><br>
-                        <strong th:text="${item.brand}"></strong><br>
-                        <strong th:text="${item.material}"></strong>
+                        <span class="badge text-bg-primary" th:text="${item.type}"></span>
+                        <span class="badge text-bg-primary" th:text="${item.color}"></span>
+                        <span class="badge text-bg-primary" th:text="${item.season}"></span>
+                        <span class="badge text-bg-primary" th:text="${item.brand}"></span>
+                        <span class="badge text-bg-primary" th:text="${item.material}"></span>
                     </p>
 
                     <button class="btn btn-primary">Módosítás</button>
