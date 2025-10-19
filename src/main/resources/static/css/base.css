@@ -1,0 +1,27 @@
+body {
+    background-color: #F7F3E3;
+    color: #4D1E10;
+}
+
+::selection {
+    background: #6F1A07;
+    color: #F7F3E3;
+}
+
+h1 {
+    text-align: center;
+}
+
+.btn {
+    background-color: #6F1A07;
+    border: none;
+    color: #F7F3E3;
+    border-radius: 15px;
+}
+
+.btn:hover, .btn:active, .btn:focus  {
+    background-color: #F7F3E3 !important;
+    border: #6F1A07 solid !important;
+    color: #4D1E10 !important;
+    border-radius: 15px;
+}
