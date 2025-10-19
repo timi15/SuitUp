@@ -1,6 +1,7 @@
 body {
     background-color: #F7F3E3;
     color: #4D1E10;
+    padding-top: 67px;
 }
 
 ::selection {
@@ -10,6 +11,7 @@ body {
 
 h1 {
     text-align: center;
+    font-weight: bold;
 }
 
 .btn {
