@@ -6,6 +6,11 @@
     font-size: large;
 }
 
+::selection {
+    background: #F7F3E3;
+    color: #6F1A07;
+}
+
 .navbar-nav {
     display: flex;
     align-items: center;
