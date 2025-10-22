@@ -1,0 +1,62 @@
+@import "navbar.css";
+@import "base.css";
+
+.btn {
+    border-radius: 10px;
+}
+
+.card {
+    background-color: #F7F3E3;
+    border: #6F1A07 solid;
+    border-radius: 15px;
+    min-height: 450px;
+}
+
+img {
+    padding: 10px;
+}
+
+.container {
+    align-items: center;
+}
+
+.card {
+    max-width: 18rem;
+    margin: 0 auto;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.badge {
+    background-color: #6F1A07;
+    color: #F7F3E3;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+}
+
+.btn {
+    width: 45%;
+    margin: 0.2em;
+    border: #6F1A07 solid;
+    border-radius: 10px;
+}
+
+.modify-btn {
+    color: #6F1A07;
+    background-color: #F7F3E3;
+}
+
+.delete-btn:hover {
+    color: #F7F3E3 !important;
+    background-color: #6F1A07 !important;
+    border: #6F1A07 solid;
+    border-radius: 15px;
+}
+
+.alert {
+    background-color: #6F1A07;
+    color: #F7F3E3;
+    font-weight: bold;
+}

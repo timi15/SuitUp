@@ -31,7 +31,7 @@ public class OutfitEntity {
     @Column(nullable = false)
     private LocalDate createdAt;
 
-    @Column(name = "image_url", nullable = false)
+    @Column(name = "image_url", nullable = false, columnDefinition = "TEXT")
     private String imageUrl;
 
     @ManyToOne

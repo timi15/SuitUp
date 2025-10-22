@@ -1,0 +1,36 @@
+<!-- fragments/navbar.html -->
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-expand fixed-top">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                    Hozzáadás
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/wardrobe-items/save">Ruhadarab feltöltés</a></li>
+                    <li><a href="">Outfit összeállítás</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+                    Gardróbom
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/wardrobe-items">Ruhadarabjaim</a></li>
+                    <li><a href="">Outfiteim</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link" role="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-person fs-2"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a href="">Vissza a főoldalra</a></li>
+                    <li><a href="">Kijelentkezés</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
