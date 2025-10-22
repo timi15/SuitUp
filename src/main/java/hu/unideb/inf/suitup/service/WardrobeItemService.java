@@ -12,6 +12,8 @@ public interface WardrobeItemService {
 
     WardrobeItemEntity findById(Long id);
 
+    List<WardrobeItemEntity> findByType(String type);
+
     WardrobeItemEntity update(Long id, WardrobeItemEntity updatedEntity);
 
     void deleteById(Long id);

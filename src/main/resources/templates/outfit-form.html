@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Új outfit készítés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/outfit-form.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div>Időjárás</div>
+
+<h1 class="text-center my-4">Új outfit készítése</h1>
+
+<form class="needs-validation container text-center" th:action="@{/outfits/save}" th:object="${outfit}" method="post"
+      novalidate>
+
+    <div class="outfit-header mb-4 outfit-form">
+
+        <input type="text" class="form-control" th:field="*{title}" placeholder="Outfit neve" required>
+
+        <select class="form-select" th:field="*{season}" required>
+            <option value="" selected hidden>Évszak</option>
+            <option value="Tavasz">Tavasz</option>
+            <option value="Nyár">Nyár</option>
+            <option value="Ősz">Ősz</option>
+            <option value="Tél">Tél</option>
+        </select>
+
+        <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}"
+               placeholder="pl.: https://példa.hu/outfit.png" required>
+
+        <button type="submit">Mentés</button>
+
+    </div>
+
+    <div>
+        <input type="hidden" name="topId" id="selectedTopId">
+        <input type="hidden" name="jacketId" id="selectedJacketId">
+        <input type="hidden" name="dressId" id="selectedDressId">
+        <input type="hidden" name="pantsId" id="selectedPantsId">
+        <input type="hidden" name="accessoryId" id="selectedAccessoryId">
+        <input type="hidden" name="shoesId" id="selectedShoesId">
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel-grid">
+
+        <!-- Felső -->
+        <div>
+
+            <h5>Felső</h5>
+
+            <div th:if="${#lists.isEmpty(tops)}" class="alert text-center">Nincs elérhető felső.</div>
+
+            <div th:if="${!#lists.isEmpty(tops)}" id="topsCarousel" class="carousel slide" data-bs-interval="false">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item" data-id="">
+                        <img th:src="@{/img/img.png}" alt="Nincs kiválasztva">
+                    </div>
+
+                    <div th:each="item, stat : ${tops}" th:classappend="${stat.index == 0} ? 'active'"
+                         class="carousel-item" th:data-id="${item.id}">
+                        <img th:src="@{${item.imageUrl}}" alt="Felső">
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#topsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#topsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Kabát -->
+        <div>
+
+            <h5>Kabát</h5>
+
+            <div th:if="${#lists.isEmpty(jackets)}" class="alert text-center">Nincs elérhető kabát.
+            </div>
+
+            <div th:if="${!#lists.isEmpty(jackets)}" id="jacketsCarousel" class="carousel slide"
+                 data-bs-interval="false">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item" data-id="">
+                        <img th:src="@{/img/img.png}" alt="Nincs kiválasztva">
+                    </div>
+
+                    <div th:each="item, stat : ${jackets}" th:classappend="${stat.index == 0} ? 'active'"
+                         class="carousel-item" th:data-id="${item.id}">
+                        <img th:src="@{${item.imageUrl}}" alt="Kabát">
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#jacketsCarousel"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#jacketsCarousel"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Ruha/Egyrészes -->
+        <div>
+
+            <h5>Ruha / Egyrészes</h5>
+
+            <div th:if="${#lists.isEmpty(dresses)}" class="alert text-center">Nincs elérhető ruha vagy egyrészes.
+            </div>
+
+            <div th:if="${!#lists.isEmpty(dresses)}" id="dressesCarousel" class="carousel slide"
+                 data-bs-interval="false">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item" data-id="">
+                        <img th:src="@{/img/img.png}" alt="Nincs kiválasztva">
+                    </div>
+
+                    <div th:each="item, stat : ${dresses}" th:classappend="${stat.index == 0} ? 'active'"
+                         class="carousel-item" th:data-id="${item.id}">
+                        <img th:src="@{${item.imageUrl}}" alt="Kabát">
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#dressesCarousel"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#dressesCarousel"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Nadrág/szoknya -->
+        <div>
+
+            <h5>Nadrág / Szoknya</h5>
+
+            <div th:if="${#lists.isEmpty(pants)}" class="alert text-center">Nincs elérhető nadrág vagy
+                szoknya.
+            </div>
+            <div th:if="${!#lists.isEmpty(pants)}" id="pantsCarousel" class="carousel slide" data-bs-interval="false">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item" data-id="">
+                        <img th:src="@{/img/img.png}" alt="Nincs kiválasztva">
+                    </div>
+
+                    <div th:each="item, stat : ${pants}" th:classappend="${stat.index == 0} ? 'active'"
+                         class="carousel-item" th:data-id="${item.id}">
+                        <img th:src="@{${item.imageUrl}}" alt="Nadrág / Szoknya">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#pantsCarousel"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#pantsCarousel"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Cipő -->
+        <div>
+
+            <h5>Cipő</h5>
+
+            <div th:if="${#lists.isEmpty(shoes)}" class="alert text-center">Nincs elérhető cipő.</div>
+
+            <div th:if="${!#lists.isEmpty(shoes)}" id="shoesCarousel" class="carousel slide" data-bs-interval="false">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item" data-id="">
+                        <img th:src="@{/img/img.png}" alt="Nincs kiválasztva">
+                    </div>
+
+                    <div th:each="item, stat : ${shoes}" th:classappend="${stat.index == 0} ? 'active'"
+                         class="carousel-item" th:data-id="${item.id}">
+                        <img th:src="@{${item.imageUrl}}" alt="Cipő">
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#shoesCarousel"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#shoesCarousel"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Kiegészítő -->
+        <div>
+
+            <h5>Kiegészítő</h5>
+
+            <div th:if="${#lists.isEmpty(accessories)}" class="alert text-center">Nincs elérhető
+                kiegészítő.
+            </div>
+
+            <div th:if="${!#lists.isEmpty(accessories)}" id="accessoriesCarousel" class="carousel slide"
+                 data-bs-interval="false">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item " data-id="">
+                        <img th:src="@{/img/img.png}" alt="Nincs kiválasztva">
+                    </div>
+
+                    <div th:each="item, stat : ${accessories}" th:classappend="${stat.index == 0} ? 'active'"
+                         class="carousel-item" th:data-id="${item.id}">
+                        <img th:src="@{${item.imageUrl}}" alt="Kiegészítő">
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#accessoriesCarousel"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#accessoriesCarousel"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<script th:src="@{/js/outfit-form.js}"></script>
+<script th:src="@{/js/validation.js}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

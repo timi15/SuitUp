@@ -31,6 +31,11 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
     }
 
     @Override
+    public List<WardrobeItemEntity> findByType(String type) {
+        return wardrobeItemRepository.findByType(type);
+    }
+
+    @Override
     public WardrobeItemEntity update(Long id, WardrobeItemEntity updatedEntity) {
         WardrobeItemEntity existing = findById(id);
         existing.setImageUrl(updatedEntity.getImageUrl());

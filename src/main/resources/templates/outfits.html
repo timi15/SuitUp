@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Outfiteim</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/wardrobe-items.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div>Időjárás</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Outfitek</h2>
+
+    <div class="alert  mt-3 text-center" th:if="${#lists.isEmpty(outfits)}">
+
+        <p class="mb-3 fs-5">Nincs elérhető outfit.</p>
+
+        <a th:href="@{/outfits/save}" class="btn btn-outline-primary">
+            <i class="bi bi-plus-circle me-2"></i>
+            Outfit összeállítás
+        </a>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4" th:each="outfit : ${outfits}">
+            <div class="card shadow-sm" style="width: 18rem;">
+                <img th:src="${outfit.imageUrl}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${outfit.title}"></h5>
+                    <p class="card-text" th:text="${outfit.createdAt}"></p>
+                    <p class="card-text" th:text="${outfit.season}"> </p>
+
+                    <button class="btn btn-primary">Módosítás</button>
+                    <button class="btn btn-primary">Törlés</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
