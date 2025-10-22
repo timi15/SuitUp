@@ -10,4 +10,10 @@ public interface WardrobeItemService {
 
     List<WardrobeItemEntity> findAll();
 
+    WardrobeItemEntity findById(Long id);
+
+    WardrobeItemEntity update(Long id, WardrobeItemEntity updatedEntity);
+
+    void deleteById(Long id);
+
 }

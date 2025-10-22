@@ -23,4 +23,28 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
     public List<WardrobeItemEntity> findAll() {
         return wardrobeItemRepository.findAll();
     }
+
+    @Override
+    public WardrobeItemEntity findById(Long id) {
+        return wardrobeItemRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Wardrobe item not found: " + id));
+    }
+
+    @Override
+    public WardrobeItemEntity update(Long id, WardrobeItemEntity updatedEntity) {
+        WardrobeItemEntity existing = findById(id);
+        existing.setImageUrl(updatedEntity.getImageUrl());
+        existing.setType(updatedEntity.getType());
+        existing.setColor(updatedEntity.getColor());
+        existing.setSeason(updatedEntity.getSeason());
+        existing.setBrand(updatedEntity.getBrand());
+        existing.setMaterial(updatedEntity.getMaterial());
+        return wardrobeItemRepository.save(existing);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        wardrobeItemRepository.deleteById(id);
+    }
+
 }

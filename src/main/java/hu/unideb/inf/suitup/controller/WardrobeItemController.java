@@ -7,10 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -42,4 +41,31 @@ public class WardrobeItemController {
         wardrobeItemService.save(wardrobeItemEntity);
         return "redirect:/wardrobe-items";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editWardrobeItem(@PathVariable Long id, Model model) {
+        WardrobeItemEntity wardrobeItem = wardrobeItemService.findById(id);
+        model.addAttribute("wardrobeItem", wardrobeItem);
+        return "wardrobe-item-form";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateWardrobeItem(
+            @PathVariable Long id,
+            @Valid @ModelAttribute("wardrobeItem") WardrobeItemEntity wardrobeItemEntity,
+            BindingResult bindingResult
+    ) {
+        if (bindingResult.hasErrors()) {
+            return "wardrobe-item-form";
+        }
+        wardrobeItemService.update(id, wardrobeItemEntity);
+        return "redirect:/wardrobe-items";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteWardrobeItem(@PathVariable Long id) {
+        wardrobeItemService.deleteById(id);
+        return "redirect:/wardrobe-items";
+    }
+
 }
