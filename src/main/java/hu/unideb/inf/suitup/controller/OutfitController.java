@@ -49,4 +49,10 @@ public class OutfitController {
         outfitService.save(outfit, topId, pantsId, dressId, jacketId, shoesId, accessoryId);
         return "redirect:/outfits";
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteOutfit(@PathVariable Long id) {
+        outfitService.deleteById(id);
+        return "redirect:/outfits";
+    }
 }

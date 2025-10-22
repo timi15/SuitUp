@@ -14,4 +14,6 @@ public interface OutfitService {
                       Long accessoryId);
 
     List<OutfitEntity> findAll();
+
+    void deleteById(Long id);
 }

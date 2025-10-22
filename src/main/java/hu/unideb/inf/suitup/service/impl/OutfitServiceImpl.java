@@ -48,4 +48,9 @@ public class OutfitServiceImpl implements OutfitService {
             item.ifPresent(selectedItems::add);
         }
     }
+
+    @Override
+    public void deleteById(Long id) {
+        outfitRepository.deleteById(id);
+    }
 }
