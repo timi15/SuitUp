@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Ruhadarabjaim</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/wardrobe-items.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
@@ -16,15 +17,25 @@
 <div class="container mt-5">
     <h2 class="mb-4 text-center">Ruhadarabjaim</h2>
 
-    <div class="alert mt-3" th:if="${#lists.isEmpty(wardrobeItems)}">
-        Nincs elérhető ruhadarab.
+    <div class="alert alert-info mt-3 text-center" th:if="${#lists.isEmpty(wardrobeItems)}">
+
+        <p class="mb-3 fs-5">Nincs elérhető ruhadarab.</p>
+
+        <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary">
+            <i class="bi bi-plus-circle me-2"></i>
+            Ruhadarab hozzáadása
+        </a>
+
     </div>
 
     <div class="row g-4">
 
         <div class="col-sm-5 col-md-4 col-lg-3" th:each="item : ${wardrobeItems}">
+
             <div class="card">
+
                 <img th:src="${item.imageUrl}" class="card-img-top" th:alt="${item.type}">
+
                 <div class="card-body">
                     <p class="card-text mb-1">
                         <span class="badge" th:text="${item.type}"></span>
@@ -34,18 +45,201 @@
                         <span class="badge" th:text="${item.material}"></span>
                     </p>
 
-                    <button class="btn btn-primary modify-btn">Módosítás</button>
-                    <button class="btn btn-primary delete-btn">Törlés</button>
+                    <button type="button" class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editModal"
+                            th:attr="data-id=${item.id},
+                            data-type=${item.type},
+                            data-color=${item.color},
+                            data-season=${item.season},
+                            data-brand=${item.brand},
+                            data-material=${item.material},
+                            data-imageurl=${item.imageUrl}">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+
+                    <button class="btn btn-primary delete-btn"
+                            th:onclick="'location.href=\'/wardrobe-items/delete/' + ${item.id} + '\';'">
+                        <i class="bi bi-trash"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Ruhadarab módosítása</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Bezárás"></button>
+                        </div>
+
+                        <form class="needs-validation container"
+                              th:action="@{/wardrobe-items/update/{id}(id=${item.id})}" method="post" novalidate>
+                            <div class="modal-body">
+
+                                <input type="hidden" id="edit-id" name="id">
+
+                                <div class="mb-3">
+                                    <label for="edit-imageUrl" class="form-label">Kép linkje</label>
+                                    <input type="text" class="form-control" id="edit-imageUrl" name="imageUrl" required>
+
+                                    <div class="invalid-feedback">
+                                        Kötelező linket megadni!
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-type" class="form-label">Típus</label>
+                                    <select id="edit-type" name="type" class="form-select" required>
+                                        <option value="" selected hidden>Típus</option>
+                                        <option value="felső">Felső</option>
+                                        <option value="nadrág/szoknya">Nadrág/Szoknya</option>
+                                        <option value="egyrészes">Egyrészes</option>
+                                        <option value="kabát">Kabát</option>
+                                        <option value="cipő">Cipő</option>
+                                        <option value="kiegészítő">Kiegészítő</option>
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Kötelező típust választani!
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-color" class="form-label">Szín</label>
+                                    <select id="edit-color" name="color" class="form-select" required>
+                                        <option value="" selected hidden>Szín</option>
+                                        <option value="piros">Piros</option>
+                                        <option value="kék">Kék</option>
+                                        <option value="lila">Lila</option>
+                                        <option value="rózsaszín">Rózsaszín</option>
+                                        <option value="zöld">Zöld</option>
+                                        <option value="fehér">Fehér</option>
+                                        <option value="fekete">Fekete</option>
+                                        <option value="szürke">Szürke</option>
+                                        <option value="sárga">Sárga</option>
+                                        <option value="narancssárga">Narancssárga</option>
+                                        <option value="bézs">Bézs</option>
+                                        <option value="barna">Barna</option>
+                                        <option value="arany">Arany</option>
+                                        <option value="ezüst">Ezüst</option>
+                                        <option value="színes">Színes</option>
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Kötelező színt választani!
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-season" class="form-label">Évszak</label>
+                                    <select id="edit-season" name="season" class="form-select" required>
+                                        <option value="" selected hidden>Évszak</option>
+                                        <option value="téli">Téli</option>
+                                        <option value="tavaszi">Tavaszi</option>
+                                        <option value="nyári">Nyári</option>
+                                        <option value="őszi">Őszi</option>
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Kötelező évszakot választani!
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-brand" class="form-label">Márka</label>
+                                    <select id="edit-brand" name="brand" class="form-select">
+                                        <option value="" selected hidden>Márka</option>
+                                        <option value=""></option>
+                                        <option value="No Name">No name</option>
+                                        <option value="Nike">Nike</option>
+                                        <option value="Adidas">Adidas</option>
+                                        <option value="Puma">Puma</option>
+                                        <option value="Reebok">Reebok</option>
+                                        <option value="New Balance">New Balance</option>
+
+                                        <option value="Levi's">Levi's</option>
+                                        <option value="Tommy Hilfiger">Tommy Hilfiger</option>
+                                        <option value="Calvin Klein">Calvin Klein</option>
+                                        <option value="Guess">Guess</option>
+                                        <option value="H &amp; M">H&amp;M</option>
+                                        <option value="Zara">Zara</option>
+                                        <option value="Sinsay">Sinsay</option>
+                                        <option value="Reserved">Reserved</option>
+                                        <option value="Cropp">Cropp</option>
+                                        <option value="House">House</option>
+                                        <option value="Bershka">Bershka</option>
+                                        <option value="Stradivarius">Stradivarius</option>
+                                        <option value="Pull &amp; Bear">Pull &amp; Bear</option>
+                                        <option value="New Yorker">New Yorker</option>
+
+                                        <option value="C &amp; A">C&amp;A</option>
+                                        <option value="Orsay">Orsay</option>
+                                        <option value="Mango">Mango</option>
+                                        <option value="Massimo dutti">Massimo Dutti</option>
+                                        <option value="Springfield">Springfield</option>
+                                        <option value="Lindex">Lindex</option>
+
+                                        <option value="Deichmann">Deichmann</option>
+                                        <option value="Humanic">Humanic</option>
+                                        <option value="Skechers">Skechers</option>
+                                        <option value="Vans">Vans</option>
+                                        <option value="Converse">Converse</option>
+                                        <option value="Fila">Fila</option>
+                                        <option value="Columbia">Columbia</option>
+                                        <option value="The North Face">The North Face</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-material" class="form-label">Anyag</label>
+                                    <select id="edit-material" name="material" class="form-select">
+                                        <option value="" selected hidden>Anyag</option>
+                                        <option value=""></option>
+                                        <option value="pamut">Pamut</option>
+                                        <option value="farmer">Farmer</option>
+                                        <option value="bőr">Bőr</option>
+                                        <option value="műbőr">Műbőr</option>
+                                        <option value="bársony">Bársony</option>
+                                        <option value="csipke">Csipke</option>
+                                        <option value="lenvászon">Lenvászon</option>
+                                        <option value="szatén">Szatén</option>
+                                        <option value="velúr">Velúr</option>
+                                        <option value="vászon">Vászon</option>
+                                        <option value="selyem">Selyem</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
+                                <button type="submit" class="btn btn-primary">Mentés</button>
+                            </div>
+
+                        </form>
+
+                    </div>
                 </div>
             </div>
+
         </div>
 
     </div>
+
 </div>
 
 
+<script th:src="@{/js/validation.js}"></script>
+<script th:src="@{/js/modal-loader.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
 </body>
 </html>
