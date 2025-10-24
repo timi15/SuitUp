@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const material = button.getAttribute('data-material');
             const imageUrl = button.getAttribute('data-imageurl');
 
+            const form = editModal.querySelector('form');
+            form.action = `/wardrobe-items/update/${id}`;
+
             editModal.querySelector('#edit-id').value = id;
             editModal.querySelector('#edit-type').value = type;
             editModal.querySelector('#edit-color').value = color;
