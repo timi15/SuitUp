@@ -7,9 +7,13 @@ img {
     margin-bottom: 0.6em;
 }
 
-h4 {
+.card-title {
     color: #4D1E10 !important;
     text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-style: italic;
+    margin: 15px 0;
 }
 
 .date {
@@ -18,5 +22,9 @@ h4 {
 }
 
 .card {
-    min-height: 800px;
+    min-height: 400px;
+}
+
+.carousel-item {
+    transition: transform 2s ease-in-out;
 }
