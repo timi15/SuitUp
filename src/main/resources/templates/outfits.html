@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Outfiteim</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/wardrobe-items.css}">
+    <link rel="stylesheet" th:href="@{/css/outfits.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
 <div>Időjárás</div>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">Outfitek</h2>
+    <h2 class="mb-4 text-center">Outfiteim</h2>
 
     <div class="alert  mt-3 text-center" th:if="${#lists.isEmpty(outfits)}">
 
@@ -28,21 +28,54 @@
     </div>
 
     <div class="row g-4">
-
         <div class="col-md-4" th:each="outfit : ${outfits}">
-            <div class="card shadow-sm" style="width: 18rem;">
-                <img th:src="${outfit.imageUrl}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${outfit.title}"></h5>
-                    <p class="card-text" th:text="${outfit.createdAt}"></p>
-                    <p class="card-text" th:text="${outfit.season}"> </p>
+            <div class="card shadow-sm" style="width: 22rem;">
 
-                    <button class="btn btn-primary">Módosítás</button>
-                    <button class="btn btn-primary">Törlés</button>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2 mt-3 wardrobe-items">
+                        <img th:each="item : ${outfit.wardrobeItems}"
+                             th:src="${item.imageUrl}"
+                             class="${item.type}"
+                             th:alt="${item.type}"
+                             style="width: 9rem; height: auto; object-fit: contain;">
+                    </div>
+
+                    <div>
+                        <h4 class="card-title" th:text="${outfit.title}">Outfit neve</h4>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <img th:src="${outfit.imageUrl}"
+                                         class="card-img-top"
+                                         alt="Outfit kép"
+                                         style="width: 9rem; height: auto; object-fit: contain;">
+                                </td>
+                                <td>
+                                    <p>
+                                        <span class="date" th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
+                                    </p>
+                                    <p>
+                                        <span class="badge" th:text="${outfit.season}"></span>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                </div>
+
+                <div class="card-footer d-flex justify-content-between">
+                    <button class="btn btn-primary edit-btn">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button class="btn btn-primary delete-btn">
+                        <i class="bi bi-trash"></i>
+                    </button>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 

@@ -1,0 +1,22 @@
+@import "navbar.css";
+@import "base.css";
+@import "card.css";
+
+img {
+    margin-right: 0.6em;
+    margin-bottom: 0.6em;
+}
+
+h4 {
+    color: #4D1E10 !important;
+    text-align: center;
+}
+
+.date {
+    color: #4D1E10;
+    font-size: 1.1em;
+}
+
+.card {
+    min-height: 800px;
+}
