@@ -1,4 +1,4 @@
-function confirmDelete(id) {
+function confirmDelete(id, element) {
     Swal.fire({
         background: "#F7F3E3",
         color: "#4D1E10",
@@ -13,7 +13,7 @@ function confirmDelete(id) {
         cancelButtonText: 'Mégse'
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`/wardrobe-items/delete/${id}`, {
+            fetch(`/${element}/delete/${id}`, {
                 method: 'POST'
             }).then(() => {
                 Swal.fire({
@@ -22,7 +22,7 @@ function confirmDelete(id) {
                     title: 'Törölve!',
                     icon: 'success',
                     text: "A törlés sikeres.",
-                    showConfirmButton: false
+                    showConfirmButton: true
                 }).then(() => {
                     location.reload();
                 });

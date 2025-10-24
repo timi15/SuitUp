@@ -5,6 +5,7 @@ import hu.unideb.inf.suitup.entity.WardrobeItemEntity;
 import hu.unideb.inf.suitup.repository.OutfitRepository;
 import hu.unideb.inf.suitup.repository.WardrobeItemRepository;
 import hu.unideb.inf.suitup.service.OutfitService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +51,7 @@ public class OutfitServiceImpl implements OutfitService {
     }
 
     @Override
+    @Transactional
     public void deleteById(Long id) {
         outfitRepository.deleteById(id);
     }

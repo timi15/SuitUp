@@ -50,7 +50,7 @@ public class OutfitController {
         return "redirect:/outfits";
     }
 
-    @GetMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteOutfit(@PathVariable Long id) {
         outfitService.deleteById(id);
         return "redirect:/outfits";
