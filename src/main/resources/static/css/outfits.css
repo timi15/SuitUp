@@ -11,8 +11,6 @@ img {
     color: #4D1E10 !important;
     text-align: center;
     text-transform: capitalize;
-    font-weight: bold;
-    font-style: italic;
     margin: 15px 0;
 }
 
@@ -27,4 +25,8 @@ img {
 
 .carousel-item {
     transition: transform 2s ease-in-out;
+}
+
+.delete-btn {
+    width: 100%;
 }

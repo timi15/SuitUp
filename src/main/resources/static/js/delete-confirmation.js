@@ -22,6 +22,7 @@ function confirmDelete(id, element) {
                     title: 'Törölve!',
                     icon: 'success',
                     text: "A törlés sikeres.",
+                    confirmButtonColor: "#6F1A07",
                     showConfirmButton: true
                 }).then(() => {
                     location.reload();

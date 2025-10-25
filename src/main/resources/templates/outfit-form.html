@@ -18,22 +18,32 @@
 <form class="needs-validation container text-center" th:action="@{/outfits/save}" th:object="${outfit}" method="post"
       novalidate>
 
-    <div class="outfit-header mb-4 outfit-form">
+    <div class="outfit-header mb-4 row outfit-form align-items-end">
 
-        <input type="text" class="form-control" th:field="*{title}" placeholder="Outfit neve" required>
+        <div class="col-6 mb-4 custom-col-text">
+            <label for="outfit-name" class="form-label text-start w-100">Outfit neve</label>
+            <input type="text" id="outfit-name" class="form-control" th:field="*{title}" placeholder="pl.: Hétvégi kirándulás" required>
+        </div>
 
-        <select class="form-select" th:field="*{season}" required>
-            <option value="" selected hidden>Évszak</option>
-            <option value="Tavasz">Tavasz</option>
-            <option value="Nyár">Nyár</option>
-            <option value="Ősz">Ősz</option>
-            <option value="Tél">Tél</option>
-        </select>
+        <div class="col-6 mb-4 custom-col">
+            <select class="form-select" th:field="*{season}" required>
+                <option value="" selected hidden>Évszak</option>
+                <option value="Tavasz">Tavasz</option>
+                <option value="Nyár">Nyár</option>
+                <option value="Ősz">Ősz</option>
+                <option value="Tél">Tél</option>
+            </select>
+        </div>
 
-        <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}"
-               placeholder="pl.: https://példa.hu/outfit.png" required>
+        <div class="col-6 mb-4 custom-col-text">
+            <label for="imageUrl" class="form-label text-start w-100">Outfit képének linkje</label>
+            <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}"
+                   placeholder="pl.: https://példa.hu/outfit.png" required>
+        </div>
 
-        <button type="submit">Mentés</button>
+        <div class="col-6 mb-4 custom-col">
+            <button type="submit">Mentés</button>
+        </div>
 
     </div>
 
