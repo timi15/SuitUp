@@ -21,12 +21,6 @@
     <div class="row mb-3 justify-content-center">
         <div class="col-6 mb-4">
 
-            <div id="imagePreviewContainer" class="mt-3 text-center mb-5">
-                <img id="imagePreview"
-                     src="https://www.shutterstock.com/image-vector/default-placeholder-businesswoman-set-four-260nw-1093557821.jpg"
-                     alt="Előnézet" class="img-fluid rounded shadow-sm" style="max-height: 250px;">
-            </div>
-
             <label for="imageUrl" class="form-label">Ruhadarab képének linkje</label>
             <input type="text" class="form-control" id="imageUrl" th:field="*{imageUrl}"
                    placeholder="pl.: https://példa.hu/ruha.png" required>
@@ -35,147 +29,154 @@
                 Kötelező linket megadni!
             </div>
 
-        </div>
-    </div>
+            <div class="row mb-6 justify-content-center">
+                <div class="col mb-4 custom-col">
 
-    <div class="row mb-6 justify-content-center">
-        <div class="col mb-4 custom-col">
+                    <select id="type" th:field="*{type}" class="form-select" required>
+                        <option value="" selected hidden>Típus</option>
+                        <option value="felső">Felső</option>
+                        <option value="nadrág/szoknya">Nadrág/Szoknya</option>
+                        <option value="egyrészes">Egyrészes</option>
+                        <option value="kabát">Kabát</option>
+                        <option value="cipő">Cipő</option>
+                        <option value="kiegészítő">Kiegészítő</option>
+                    </select>
 
-            <select id="type" th:field="*{type}" class="form-select" required>
-                <option value="" selected hidden>Típus</option>
-                <option value="felső">Felső</option>
-                <option value="nadrág/szoknya">Nadrág/Szoknya</option>
-                <option value="egyrészes">Egyrészes</option>
-                <option value="kabát">Kabát</option>
-                <option value="cipő">Cipő</option>
-                <option value="kiegészítő">Kiegészítő</option>
-            </select>
+                    <div class="invalid-feedback">
+                        Kötelező típust választani!
+                    </div>
 
-            <div class="invalid-feedback">
-                Kötelező típust választani!
+                </div>
+
+                <div class="col mb-4 custom-col">
+
+                    <select id="season" th:field="*{season}" class="form-select" required>
+                        <option value="" selected hidden>Évszak</option>
+                        <option value="téli">Téli</option>
+                        <option value="tavaszi">Tavaszi</option>
+                        <option value="nyári">Nyári</option>
+                        <option value="őszi">Őszi</option>
+                    </select>
+
+                    <div class="invalid-feedback">
+                        Kötelező évszakot választani!
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row mb-6 justify-content-center">
+
+                <div class="col mb-4 custom-col">
+                    <select id="color" th:field="*{color}" class="form-select" required>
+                        <option value="" selected hidden>Szín</option>
+                        <option value="piros">Piros</option>
+                        <option value="bordó">Bordó</option>
+                        <option value="kék">Kék</option>
+                        <option value="lila">Lila</option>
+                        <option value="rózsaszín">Rózsaszín</option>
+                        <option value="zöld">Zöld</option>
+                        <option value="fehér">Fehér</option>
+                        <option value="fekete">Fekete</option>
+                        <option value="szürke">Szürke</option>
+                        <option value="sárga">Sárga</option>
+                        <option value="narancssárga">Narancssárga</option>
+                        <option value="bézs">Bézs</option>
+                        <option value="barna">Barna</option>
+                        <option value="arany">Arany</option>
+                        <option value="ezüst">Ezüst</option>
+                        <option value="színes">Színes</option>
+                    </select>
+
+                    <div class="invalid-feedback">
+                        Kötelező színt választani!
+                    </div>
+
+                </div>
+
+                <div class="col mb-4 custom-col">
+
+                    <select id="brand" th:field="*{brand}" class="form-select">
+                        <option value="" selected hidden>Márka</option>
+                        <option value=""></option>
+                        <option value="No Name">No name</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Puma">Puma</option>
+                        <option value="Reebok">Reebok</option>
+                        <option value="New Balance">New Balance</option>
+
+                        <option value="Levi's">Levi's</option>
+                        <option value="Tommy Hilfiger">Tommy Hilfiger</option>
+                        <option value="Calvin Klein">Calvin Klein</option>
+                        <option value="Guess">Guess</option>
+                        <option value="H &amp; M">H&amp;M</option>
+                        <option value="Zara">Zara</option>
+                        <option value="Sinsay">Sinsay</option>
+                        <option value="Reserved">Reserved</option>
+                        <option value="Cropp">Cropp</option>
+                        <option value="House">House</option>
+                        <option value="Bershka">Bershka</option>
+                        <option value="Stradivarius">Stradivarius</option>
+                        <option value="Pull &amp; Bear">Pull &amp; Bear</option>
+                        <option value="New Yorker">New Yorker</option>
+
+                        <option value="C &amp; A">C&amp;A</option>
+                        <option value="Orsay">Orsay</option>
+                        <option value="Mango">Mango</option>
+                        <option value="Massimo dutti">Massimo Dutti</option>
+                        <option value="Springfield">Springfield</option>
+                        <option value="Lindex">Lindex</option>
+
+                        <option value="Deichmann">Deichmann</option>
+                        <option value="Humanic">Humanic</option>
+                        <option value="Skechers">Skechers</option>
+                        <option value="Vans">Vans</option>
+                        <option value="Converse">Converse</option>
+                        <option value="Fila">Fila</option>
+                        <option value="Columbia">Columbia</option>
+                        <option value="The North Face">The North Face</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="row mb-6 justify-content-center">
+                <div class="col mb-4 custom-col">
+
+                    <select id="material" th:field="*{material}" class="form-select">
+                        <option value="" selected hidden>Anyag</option>
+                        <option value=""></option>
+                        <option value="pamut">Pamut</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="bőr">Bőr</option>
+                        <option value="műbőr">Műbőr</option>
+                        <option value="bársony">Bársony</option>
+                        <option value="csipke">Csipke</option>
+                        <option value="lenvászon">Lenvászon</option>
+                        <option value="szatén">Szatén</option>
+                        <option value="velúr">Velúr</option>
+                        <option value="vászon">Vászon</option>
+                        <option value="selyem">Selyem</option>
+                    </select>
+
+                </div>
+
+                <div class="col mb-4 custom-col">
+                    <button type="submit" class="btn btn-primary">Mentés</button>
+                </div>
+
             </div>
 
         </div>
 
-        <div class="col mb-4 custom-col">
-
-            <select id="season" th:field="*{season}" class="form-select" required>
-                <option value="" selected hidden>Évszak</option>
-                <option value="téli">Téli</option>
-                <option value="tavaszi">Tavaszi</option>
-                <option value="nyári">Nyári</option>
-                <option value="őszi">Őszi</option>
-            </select>
-
-            <div class="invalid-feedback">
-                Kötelező évszakot választani!
+        <div class="col-6 mb-4">
+            <div id="imagePreviewContainer" class="mt-3 text-center mb-5">
+                <img id="imagePreview"
+                     src="https://www.shutterstock.com/image-vector/default-placeholder-businesswoman-set-four-260nw-1093557821.jpg"
+                     alt="Előnézet" class="img-fluid rounded" style="max-height: 250px;">
             </div>
-
         </div>
-    </div>
-
-    <div class="row mb-6 justify-content-center">
-
-        <div class="col mb-4 custom-col">
-            <select id="color" th:field="*{color}" class="form-select" required>
-                <option value="" selected hidden>Szín</option>
-                <option value="piros">Piros</option>
-                <option value="kék">Kék</option>
-                <option value="lila">Lila</option>
-                <option value="rózsaszín">Rózsaszín</option>
-                <option value="zöld">Zöld</option>
-                <option value="fehér">Fehér</option>
-                <option value="fekete">Fekete</option>
-                <option value="szürke">Szürke</option>
-                <option value="sárga">Sárga</option>
-                <option value="narancssárga">Narancssárga</option>
-                <option value="bézs">Bézs</option>
-                <option value="barna">Barna</option>
-                <option value="arany">Arany</option>
-                <option value="ezüst">Ezüst</option>
-                <option value="színes">Színes</option>
-            </select>
-
-            <div class="invalid-feedback">
-                Kötelező színt választani!
-            </div>
-
-        </div>
-
-        <div class="col mb-4 custom-col">
-
-            <select id="brand" th:field="*{brand}" class="form-select">
-                <option value="" selected hidden>Márka</option>
-                <option value=""></option>
-                <option value="" selected hidden>Márka</option>
-                <option value=""></option>
-                <option value="No Name">No name</option>
-                <option value="Nike">Nike</option>
-                <option value="Adidas">Adidas</option>
-                <option value="Puma">Puma</option>
-                <option value="Reebok">Reebok</option>
-                <option value="New Balance">New Balance</option>
-
-                <option value="Levi's">Levi's</option>
-                <option value="Tommy Hilfiger">Tommy Hilfiger</option>
-                <option value="Calvin Klein">Calvin Klein</option>
-                <option value="Guess">Guess</option>
-                <option value="H &amp; M">H&amp;M</option>
-                <option value="Zara">Zara</option>
-                <option value="Sinsay">Sinsay</option>
-                <option value="Reserved">Reserved</option>
-                <option value="Cropp">Cropp</option>
-                <option value="House">House</option>
-                <option value="Bershka">Bershka</option>
-                <option value="Stradivarius">Stradivarius</option>
-                <option value="Pull &amp; Bear">Pull &amp; Bear</option>
-                <option value="New Yorker">New Yorker</option>
-
-                <option value="C &amp; A">C&amp;A</option>
-                <option value="Orsay">Orsay</option>
-                <option value="Mango">Mango</option>
-                <option value="Massimo dutti">Massimo Dutti</option>
-                <option value="Springfield">Springfield</option>
-                <option value="Lindex">Lindex</option>
-
-                <option value="Deichmann">Deichmann</option>
-                <option value="Humanic">Humanic</option>
-                <option value="Skechers">Skechers</option>
-                <option value="Vans">Vans</option>
-                <option value="Converse">Converse</option>
-                <option value="Fila">Fila</option>
-                <option value="Columbia">Columbia</option>
-                <option value="The North Face">The North Face</option>
-            </select>
-
-        </div>
-    </div>
-
-    <div class="row mb-6 justify-content-center">
-        <div class="col mb-4 custom-col">
-
-            <select id="material" th:field="*{material}" class="form-select">
-                <option value="" selected hidden>Anyag</option>
-                <option value=""></option>
-                <option value="pamut">Pamut</option>
-                <option value="farmer">Farmer</option>
-                <option value="bőr">Bőr</option>
-                <option value="műbőr">Műbőr</option>
-                <option value="bársony">Bársony</option>
-                <option value="csipke">Csipke</option>
-                <option value="lenvászon">Lenvászon</option>
-                <option value="szatén">Szatén</option>
-                <option value="velúr">Velúr</option>
-                <option value="vászon">Vászon</option>
-                <option value="selyem">Selyem</option>
-            </select>
-
-        </div>
-
-        <div class="col mb-4 custom-col">
-            <button type="submit" class="btn btn-primary">Mentés</button>
-        </div>
-
     </div>
 
 </form>

@@ -3,7 +3,7 @@
 @import "form.css";
 
 .custom-col {
-    max-width: 25% !important;
+    max-width: 100% !important;
 }
 
 .btn {
@@ -13,8 +13,17 @@
 
 .container {
     margin-top: 5em;
+    padding-left: 10em;
 }
 
 h1 {
     margin-top: 2em;
+}
+
+.form-control {
+    margin-bottom: 1.5em;
+}
+
+img {
+    margin-top: 1em;
 }
