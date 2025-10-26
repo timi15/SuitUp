@@ -1,6 +1,7 @@
 @import "navbar.css";
 @import "base.css";
 @import "card.css";
+@import "form.css";
 
 img {
     padding: 10px;
@@ -9,4 +10,36 @@ img {
 .card {
     max-width: 18rem;
     min-height: 550px;
+}
+
+/* Modal */
+
+.modal-content {
+    background: #F7F3E3;
+    color: #4D1E10;
+    border: none;
+}
+
+.modal-header {
+    background: #6F1A07;
+    color: #F7F3E3;
+    border: none;
+}
+
+.modal-save-btn:hover {
+    background-color: #6F1A07 !important;
+    border: #6F1A07 solid !important;
+    color: #F7F3E3 !important;
+    border-radius: 15px;
+}
+
+.modal-btn {
+    background-color: #F7F3E3 !important;
+    border: #6F1A07 solid !important;
+    color: #4D1E10 !important;
+    border-radius: 10px;
+}
+
+.modal-footer {
+    border: none;
 }
