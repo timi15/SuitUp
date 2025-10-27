@@ -1,0 +1,50 @@
+.btn {
+    border-radius: 10px;
+}
+
+.card {
+    background-color: #F7F3E3;
+    border: #6F1A07 solid;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+.container {
+    align-items: center;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.badge {
+    background-color: #6F1A07;
+    color: #F7F3E3;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+.btn {
+    width: 48%;
+    border: #6F1A07 solid;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+}
+
+.edit-btn {
+    color: #6F1A07;
+    background-color: #F7F3E3;
+    margin-right: 0.5em;
+}
+
+.delete-btn:hover {
+    color: #F7F3E3 !important;
+    background-color: #6F1A07 !important;
+    border: #6F1A07 solid;
+    border-radius: 15px;
+}
+
+.card-footer {
+    border: none;
+    background-color: transparent;
+}

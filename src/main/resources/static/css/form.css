@@ -1,0 +1,35 @@
+input {
+    height: 3em;
+}
+
+select {
+    height: 3em;
+}
+
+.form-control, .form-select {
+    border: #6F1A07 solid;
+    background-color: #F7F3E3;
+    border-radius: 15px;
+    color: #4D1E10;
+    caret-color: #4D1E10;
+}
+
+.form-control:focus {
+    background: rgba(179, 182, 183, 0.7);
+    color: #4D1E10;
+    box-shadow: none;
+    border: #6F1A07 solid;
+}
+
+.form-control::placeholder {
+    color: rgba(77, 30, 16, 0.7);
+}
+
+.form-select:focus {
+    box-shadow: none;
+    border: #6F1A07 solid;
+}
+
+.form-select {
+    text-align: center;
+}

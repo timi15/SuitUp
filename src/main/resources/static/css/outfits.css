@@ -1,0 +1,32 @@
+@import "navbar.css";
+@import "base.css";
+@import "card.css";
+
+img {
+    margin-right: 0.6em;
+    margin-bottom: 0.6em;
+}
+
+.card-title {
+    color: #4D1E10 !important;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 15px 0;
+}
+
+.date {
+    color: #4D1E10;
+    font-size: 1.1em;
+}
+
+.card {
+    height: 42rem;
+}
+
+.carousel-item {
+    transition: transform 2s ease-in-out;
+}
+
+.delete-btn {
+    width: 100%;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Outfiteim</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/outfits.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div>Időjárás</div>
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Outfiteim</h1>
+
+    <div class="alert  mt-3 text-center" th:if="${#lists.isEmpty(outfits)}">
+
+        <p class="mb-3 fs-5">Nincs elérhető outfit.</p>
+
+        <a th:href="@{/outfits/save}" class="btn btn-outline-primary">
+            <i class="bi bi-plus-circle me-2"></i>
+            Outfit összeállítás
+        </a>
+
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4" th:each="outfit : ${outfits}">
+            <div class="card shadow-sm" style="width: 22rem;">
+
+                <div class="card-body">
+                    <div id="carousel-outfit-[[${outfit.id}]]" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-inner text-center">
+                            <div class="carousel-item mt-2 mb-3" th:each="item, stat : ${outfit.wardrobeItems}"
+                                 th:classappend="${stat.index == 0} ? ' active'">
+                                <img th:src="${item.imageUrl}"
+                                     th:alt="${item.type}"
+                                     style="width: 10rem; height: auto; min-height: 15rem; max-height: 15rem; object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <h2 class="card-title" th:text="${outfit.title}">Outfit neve</h2>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <img th:src="${outfit.imageUrl}"
+                                         class="card-img-top"
+                                         alt="Outfit kép"
+                                         style="width: 9rem; height: auto; object-fit: contain;">
+                                </td>
+                                <td>
+                                    <p>
+                                        <span class="date" th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
+                                    </p>
+                                    <p>
+                                        <span class="badge" th:text="${outfit.season}"></span>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                </div>
+
+                <div class="card-footer d-flex justify-content-end">
+                    <button class="btn btn-primary delete-btn" th:onclick="'confirmDelete(' + ${outfit.id} + ', \'outfits\');'">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/delete-confirmation.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -62,7 +62,7 @@ public class WardrobeItemController {
         return "redirect:/wardrobe-items";
     }
 
-    @GetMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteWardrobeItem(@PathVariable Long id) {
         wardrobeItemService.deleteById(id);
         return "redirect:/wardrobe-items";

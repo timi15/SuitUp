@@ -1,62 +1,50 @@
 @import "navbar.css";
 @import "base.css";
-
-.btn {
-    border-radius: 10px;
-}
-
-.card {
-    background-color: #F7F3E3;
-    border: #6F1A07 solid;
-    border-radius: 15px;
-    min-height: 450px;
-}
+@import "card.css";
+@import "form.css";
 
 img {
     padding: 10px;
 }
 
-.container {
-    align-items: center;
-}
-
 .card {
     max-width: 18rem;
-    margin: 0 auto;
+    min-height: 550px;
 }
 
-.row {
-    margin-bottom: 20px;
+.card-header {
+    border: none;
+    background-color: transparent;
 }
 
-.badge {
-    background-color: #6F1A07;
+/* Modal */
+
+.modal-content {
+    background: #F7F3E3;
+    color: #4D1E10;
+    border: none;
+}
+
+.modal-header {
+    background: #6F1A07;
     color: #F7F3E3;
-    font-size: 0.8em;
-    margin-bottom: 1em;
+    border: none;
 }
 
-.btn {
-    width: 45%;
-    margin: 0.2em;
-    border: #6F1A07 solid;
-    border-radius: 10px;
-}
-
-.modify-btn {
-    color: #6F1A07;
-    background-color: #F7F3E3;
-}
-
-.delete-btn:hover {
-    color: #F7F3E3 !important;
+.modal-save-btn:hover {
     background-color: #6F1A07 !important;
-    border: #6F1A07 solid;
+    border: #6F1A07 solid !important;
+    color: #F7F3E3 !important;
     border-radius: 15px;
 }
 
-.alert {
-    background-color: #6F1A07;
-    color: #F7F3E3;
-    font-weight: bold;
+.modal-btn {
+    background-color: #F7F3E3 !important;
+    border: #6F1A07 solid !important;
+    color: #4D1E10 !important;
+    border-radius: 10px;
+}
+
+.modal-footer {
+    border: none;
 }
