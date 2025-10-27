@@ -93,3 +93,17 @@ form {
     color: #F7F3E3;
     font-weight: bold;
 }
+
+h1 {
+    padding-bottom: 1em;
+}
+
+h4 {
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-bottom: 1em;
+}
+
+.carousel-grid {
+    margin-bottom: 3em;
+}

@@ -21,13 +21,13 @@
     <div class="outfit-header mb-4 row outfit-form align-items-end">
 
         <div class="col-6 mb-4 custom-col-text">
-            <label for="outfit-name" class="form-label text-start w-100">Outfit neve</label>
-            <input type="text" id="outfit-name" class="form-control" th:field="*{title}" placeholder="pl.: Hétvégi kirándulás" required>
+            <label for="outfit-name" class="form-label text-start w-100">Outfit neve<sup class="required-field">*</sup></label>
+            <input type="text" id="outfit-name" class="form-control" th:field="*{title}" placeholder="pl.: Office chic" required>
         </div>
 
         <div class="col-6 mb-4 custom-col">
             <select class="form-select" th:field="*{season}" required>
-                <option value="" selected hidden>Évszak</option>
+                <option value="" selected hidden>Évszak<sup class="required-field">*</sup></option>
                 <option value="Tavasz">Tavasz</option>
                 <option value="Nyár">Nyár</option>
                 <option value="Ősz">Ősz</option>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="col-6 mb-4 custom-col-text">
-            <label for="imageUrl" class="form-label text-start w-100">Outfit képének linkje</label>
+            <label for="imageUrl" class="form-label text-start w-100">Outfit képének linkje<sup class="required-field">*</sup></label>
             <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}"
                    placeholder="pl.: https://példa.hu/outfit.png" required>
         </div>
@@ -62,7 +62,7 @@
         <!-- Felső -->
         <div>
 
-            <h5>Felső</h5>
+            <h4>Felső</h4>
 
             <div th:if="${#lists.isEmpty(tops)}" class="alert text-center">Nincs elérhető felső.</div>
 
@@ -96,7 +96,7 @@
         <!-- Kabát -->
         <div>
 
-            <h5>Kabát</h5>
+            <h4>Kabát</h4>
 
             <div th:if="${#lists.isEmpty(jackets)}" class="alert text-center">Nincs elérhető kabát.
             </div>
@@ -134,7 +134,7 @@
         <!-- Ruha/Egyrészes -->
         <div>
 
-            <h5>Ruha / Egyrészes</h5>
+            <h4>Ruha / Egyrészes</h4>
 
             <div th:if="${#lists.isEmpty(dresses)}" class="alert text-center">Nincs elérhető ruha vagy egyrészes.
             </div>
@@ -172,7 +172,7 @@
         <!-- Nadrág/szoknya -->
         <div>
 
-            <h5>Nadrág / Szoknya</h5>
+            <h4>Nadrág / Szoknya</h4>
 
             <div th:if="${#lists.isEmpty(pants)}" class="alert text-center">Nincs elérhető nadrág vagy
                 szoknya.
@@ -203,7 +203,7 @@
         <!-- Cipő -->
         <div>
 
-            <h5>Cipő</h5>
+            <h4>Cipő</h4>
 
             <div th:if="${#lists.isEmpty(shoes)}" class="alert text-center">Nincs elérhető cipő.</div>
 
@@ -239,7 +239,7 @@
         <!-- Kiegészítő -->
         <div>
 
-            <h5>Kiegészítő</h5>
+            <h4>Kiegészítő</h4>
 
             <div th:if="${#lists.isEmpty(accessories)}" class="alert text-center">Nincs elérhető
                 kiegészítő.

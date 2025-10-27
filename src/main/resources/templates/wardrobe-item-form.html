@@ -12,8 +12,6 @@
 
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-<div>Időjárás</div>
-
 <h1>Új ruhadarab feltöltése</h1>
 
 <form class="needs-validation container" th:action="@{/wardrobe-items/save}" th:object="${wardrobeItem}" method="post" novalidate>
@@ -21,7 +19,7 @@
     <div class="row mb-3 justify-content-center">
         <div class="col-6 mb-4">
 
-            <label for="imageUrl" class="form-label">Ruhadarab képének linkje</label>
+            <label for="imageUrl" class="form-label">Ruhadarab képének linkje<sup class="required-field">*</sup></label>
             <input type="text" class="form-control" id="imageUrl" th:field="*{imageUrl}"
                    placeholder="pl.: https://példa.hu/ruha.png" required>
 
@@ -33,7 +31,7 @@
                 <div class="col mb-4 custom-col">
 
                     <select id="type" th:field="*{type}" class="form-select" required>
-                        <option value="" selected hidden>Típus</option>
+                        <option value="" selected hidden>Típus<sup class="required-field">*</sup></option>
                         <option value="felső">Felső</option>
                         <option value="nadrág/szoknya">Nadrág/Szoknya</option>
                         <option value="egyrészes">Egyrészes</option>
@@ -51,7 +49,7 @@
                 <div class="col mb-4 custom-col">
 
                     <select id="season" th:field="*{season}" class="form-select" required>
-                        <option value="" selected hidden>Évszak</option>
+                        <option value="" selected hidden>Évszak<sup class="required-field">*</sup></option>
                         <option value="téli">Téli</option>
                         <option value="tavaszi">Tavaszi</option>
                         <option value="nyári">Nyári</option>
@@ -69,7 +67,7 @@
 
                 <div class="col mb-4 custom-col">
                     <select id="color" th:field="*{color}" class="form-select" required>
-                        <option value="" selected hidden>Szín</option>
+                        <option value="" selected hidden>Szín<sup class="required-field">*</sup></option>
                         <option value="piros">Piros</option>
                         <option value="bordó">Bordó</option>
                         <option value="kék">Kék</option>

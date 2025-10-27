@@ -12,6 +12,11 @@ img {
     min-height: 550px;
 }
 
+.card-header {
+    border: none;
+    background-color: transparent;
+}
+
 /* Modal */
 
 .modal-content {

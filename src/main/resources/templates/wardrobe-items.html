@@ -34,7 +34,10 @@
 
             <div class="card">
 
-                <img th:src="${item.imageUrl}" class="card-img-top" th:alt="${item.type}" style="width: 15rem; height: auto; object-fit: contain; margin: auto">
+                <div class="card-header" style="height: 325px;">
+                    <img th:src="${item.imageUrl}" class="card-img-top" th:alt="${item.type}"
+                         style="width: 15rem; height: auto; min-height: 20rem; max-height: 20rem; object-fit: contain; margin: auto">
+                </div>
 
                 <div class="card-body">
                     <p class="card-text mb-1">
@@ -62,7 +65,8 @@
                     </button>
 
                     <button class="btn btn-primary delete-btn"
-                            th:onclick="'confirmDelete(' + ${item.id} + ', \'wardrobe-items\');'">
+                            th:onclick="'confirmDelete(' + ${item.id} + ', \'wardrobe-items\');'"
+                            style="height: 40px">
                         <i class="bi bi-trash"></i>
                     </button>
                 </div>

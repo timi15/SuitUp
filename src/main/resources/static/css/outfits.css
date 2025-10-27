@@ -20,7 +20,7 @@ img {
 }
 
 .card {
-    min-height: 400px;
+    height: 42rem;
 }
 
 .carousel-item {
