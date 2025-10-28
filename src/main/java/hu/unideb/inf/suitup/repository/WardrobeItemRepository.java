@@ -8,5 +8,9 @@ import java.util.List;
 
 @Repository
 public interface WardrobeItemRepository extends JpaRepository<WardrobeItemEntity, Long> {
-    List<WardrobeItemEntity> findByType(String type);
+
+    List<WardrobeItemEntity> findByUserId(Long useId);
+
+    List<WardrobeItemEntity> findByUserIdAndType(Long userId, String type);
+
 }
