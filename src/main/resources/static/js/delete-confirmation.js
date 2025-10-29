@@ -13,8 +13,14 @@ function confirmDelete(id, element) {
         cancelButtonText: 'Mégse'
     }).then((result) => {
         if (result.isConfirmed) {
+
+            const csrfToken = document.getElementById("csrfToken").value;
+
             fetch(`/${element}/delete/${id}`, {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                }
             }).then(() => {
                 Swal.fire({
                     background: "#F7F3E3",

@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/wardrobe-items")
@@ -71,6 +69,7 @@ public class WardrobeItemController {
     @PostMapping("/delete/{id}")
     public String deleteWardrobeItem(@PathVariable Long id) {
         Long userId = userService.getCurrentUserId();
+        System.out.println(">>> Controller reached, id=" + id + ", userId=" + userId);
         wardrobeItemService.deleteById(userId, id);
         return "redirect:/wardrobe-items";
     }
