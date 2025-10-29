@@ -21,13 +21,9 @@
                     <h2>Bejelentkezés</h2>
                     <form class="needs-validation" th:action="@{/auth/login}" method="post" novalidate>
 
-                        <div th:if="${param.logout}">
-                            <p class="logout-message">Sikeresen kijelentkeztél!</p>
-                        </div>
-
-                        <div th:if="${param.error}">
-                            <p class="error-message">Hibás felhasználónév vagy jelszó!</p>
-                        </div>
+                        <div id="login-error" th:if="${param.error}" hidden></div>
+                        <div id="logout-success" th:if="${param.logout}" hidden></div>
+                        <div id="register-success" th:if="${param.success}" hidden></div>
 
                         <div>
                             <label class="form-label" for="user-name">Felhasználónév</label>
@@ -56,7 +52,8 @@
     </div>
 
     <script th:src="@{/js/validation.js}"></script>
+    <script th:src="@{/js/auth-alerts.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
