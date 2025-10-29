@@ -6,8 +6,10 @@ body {
 
 
 h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     margin-top: 2em;
+    margin-bottom: 1em;
+
 }
 
 h2 {
@@ -24,9 +26,11 @@ h2 {
 }
 
 .login-form h2 {
-    letter-spacing: 1px;
+    letter-spacing: 7px;
     align-self: center !important;
     margin-bottom: 2em;
+    font-weight: bolder;
+
 }
 
 .form-control{
@@ -52,6 +56,7 @@ h2 {
 
 .form-label {
     margin-top: 2em;
+    font-weight: bold;
 }
 
 .btn {
@@ -62,6 +67,8 @@ h2 {
     width: 31em;
     height: 3em;
     margin-top: 6em;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .btn:hover {
