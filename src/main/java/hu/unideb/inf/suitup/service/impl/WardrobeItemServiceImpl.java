@@ -73,8 +73,9 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
     @Transactional
     public void deleteById(Long userId,Long id) {
         WardrobeItemEntity item = findById(userId, id);
+        UserEntity user = userRepository.findById(userId).get();
 
-        List<OutfitEntity> outfitsToDelete = outfitRepository.findAll().stream()
+        List<OutfitEntity> outfitsToDelete = outfitRepository.findAllByUser(user).stream()
                 .filter(outfit -> outfit.getWardrobeItems().contains(item))
                 .toList();
 
