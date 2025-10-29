@@ -17,6 +17,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity register(UserEntity userEntity) {
+
+        if (userRepository.existsByUsername(userEntity.getUsername())) {
+            throw new IllegalArgumentException("Felhasználónév már foglalt!");
+        }
+
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         return userRepository.save(userEntity);
     }

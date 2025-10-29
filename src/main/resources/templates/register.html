@@ -29,6 +29,10 @@
                         </div>
                     </div>
 
+                    <div th:if="${errorMessage}" class="alert alert-danger">
+                        <p th:text="${errorMessage}" style="height: 0.5em"></p>
+                    </div>
+
                     <div>
                         <label class="form-label" for="user-name">Felhasználónév</label>
                         <input type="text" th:field="*{username}" name="username" class="form-control" id="user-name" placeholder="Felhasználónév" required>

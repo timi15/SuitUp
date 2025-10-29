@@ -2,9 +2,11 @@ package hu.unideb.inf.suitup.controller;
 
 import hu.unideb.inf.suitup.entity.UserEntity;
 import hu.unideb.inf.suitup.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +31,21 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("user") UserEntity user) {
-        userService.register(user);
+    public String register(
+            @Valid @ModelAttribute("user") UserEntity user,
+            BindingResult bindingResult,
+            Model model
+    ) {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+
+        try {
+            userService.register(user);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "register";
+        }
         return "redirect:/login?success";
     }
 
