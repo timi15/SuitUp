@@ -8,12 +8,13 @@ body {
 h1 {
     font-size: 3.5em;
     margin-top: 2em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 
 }
 
 h2 {
     text-align: center;
+    letter-spacing: 2px;
 }
 
 .login-form {
@@ -26,7 +27,7 @@ h2 {
 }
 
 .login-form h2 {
-    letter-spacing: 7px;
+    letter-spacing: 4px;
     align-self: center !important;
     margin-bottom: 2em;
     font-weight: bolder;
