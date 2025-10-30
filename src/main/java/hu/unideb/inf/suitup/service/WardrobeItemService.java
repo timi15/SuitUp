@@ -6,16 +6,16 @@ import java.util.List;
 
 public interface WardrobeItemService {
 
-    WardrobeItemEntity save(WardrobeItemEntity wardrobeItemEntity);
+    WardrobeItemEntity save(Long userId, WardrobeItemEntity wardrobeItemEntity);
 
-    List<WardrobeItemEntity> findAll();
+    List<WardrobeItemEntity> findAll(Long userId);
 
-    WardrobeItemEntity findById(Long id);
+    WardrobeItemEntity findById(Long userId, Long id);
 
-    List<WardrobeItemEntity> findByType(String type);
+    List<WardrobeItemEntity> findByType(Long userId, String type);
 
-    WardrobeItemEntity update(Long id, WardrobeItemEntity updatedEntity);
+    WardrobeItemEntity update(Long userId, Long id, WardrobeItemEntity updatedEntity);
 
-    void deleteById(Long id);
+    void deleteById(Long userId, Long id);
 
 }

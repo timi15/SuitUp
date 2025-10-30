@@ -1,15 +1,15 @@
 package hu.unideb.inf.suitup.repository;
 
-import hu.unideb.inf.suitup.entity.OutfitEntity;
 import hu.unideb.inf.suitup.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface OutfitRepository extends JpaRepository<OutfitEntity, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-    List<OutfitEntity> findAllByUser(UserEntity userEntity);
+    Optional<UserEntity> findByUsername(String username);
 
+    Boolean existsByUsername(String username);
 }

@@ -66,3 +66,12 @@ a:hover {
     padding-bottom: 0.5em;
 }
 
+button {
+    background-color: #6F1A07;
+    color: #F7F3E3;
+    border: none;
+}
+
+button:hover {
+    color: #B3B6B7;
+}

@@ -5,7 +5,8 @@ import hu.unideb.inf.suitup.entity.OutfitEntity;
 import java.util.List;
 
 public interface OutfitService {
-    OutfitEntity save(OutfitEntity outfit,
+    OutfitEntity save( Long userId,
+                      OutfitEntity outfit,
                       Long topId,
                       Long pantsId,
                       Long dressId,
@@ -13,7 +14,7 @@ public interface OutfitService {
                       Long shoesId,
                       Long accessoryId);
 
-    List<OutfitEntity> findAll();
+    List<OutfitEntity> findAll(Long userId);
 
-    void deleteById(Long id);
+    void deleteById(Long userId, Long id);
 }
