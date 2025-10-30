@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
             background: "#F7F3E3",
             color: "#4D1E10",
             icon: 'success',
-            title: 'Sikeres kijelentkezés!',
-            text: 'Viszlát, hamarosan újra találkozunk!',
+            title: 'Sikeresen kijelentkeztél!',
+            text: 'Viszlát, várunk vissza!',
             confirmButtonText: 'OK',
             confirmButtonColor: '#6F1A07'
         });
@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
             background: "#F7F3E3",
             color: "#4D1E10",
             icon: 'success',
-            title: 'Sikeres regisztráció!',
+            title: 'Sikeresen regisztráltál!',
             text: 'Most már bejelentkezhetsz a SuitUp! fiókodba.',
-            confirmButtonText: 'Belépés',
+            confirmButtonText: 'Bejelentkezés',
             confirmButtonColor: '#6F1A07'
         });
     }
