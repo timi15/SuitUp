@@ -5,13 +5,18 @@
     <title>Új outfit készítés</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/outfit-form.css}">
+    <link rel="stylesheet" th:href="@{/css/weather-widget.css}">
+    <link rel="stylesheet" th:href="@{/css/weather-forecast-widget.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-<div>Időjárás</div>
+<div class="full-weather-widget">
+    <div th:replace="fragments/weather-widget :: weather-widget"></div>
+    <div th:replace="fragments/weather-forecast-widget :: weather-forecast-widget"></div>
+</div>
 
 <h1 class="text-center my-4">Új outfit készítése</h1>
 

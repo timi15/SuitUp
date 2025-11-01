@@ -1,0 +1,13 @@
+<div th:fragment="weather-widget" class="weather-widget">
+    <div class="icon-info-container">
+        <img class="weather-icon" th:src="@{${weather.iconUrl}}" alt="weather icon"/>
+
+        <div class="weather-info">
+            <span class="temperature" th:text="${weather.temperature} + '°C'"></span>
+            <span class="wind" th:text="'Szél: ' + ${weather.windSpeed} + ' km/h'"></span>
+        </div>
+    </div>
+
+    <span class="current-date" th:text="${currentDate}"></span>
+
+</div>
