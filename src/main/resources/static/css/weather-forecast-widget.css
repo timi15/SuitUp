@@ -4,7 +4,6 @@
     justify-content: center;
     gap: 6vw;
     margin: 1vw;
-    opacity: 65%;
 }
 
 .weather-widget{
@@ -16,7 +15,6 @@
     gap: 1vw;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    margin-top: 1.5vw;
 }
 
 .forecast-hour {
@@ -25,15 +23,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 5vw;
+    width: 5rem;
     text-align: center;
     scroll-snap-align: start;
     transition: transform 0.2s ease, background 0.2s ease;
+    border: #6F1A07 solid 3px;
+    border-radius: 20px;
+    background-color: rgba(179, 182, 183, 0.5);
+    padding: 20px;
+    height: 8.5rem;
 }
 
 .forecast-hour .time {
     font-size: 1vw;
-    color: #2b2118;
+    color: #4D1E10;
 }
 
 .forecast-hour .forecast-icon {

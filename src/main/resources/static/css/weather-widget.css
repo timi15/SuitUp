@@ -5,7 +5,8 @@
     align-items: center;
     justify-content: center;
     gap: 1vw;
-    border: 2px solid gray;
+    border: 3px solid #6F1A07;
+    background-color: rgba(179, 182, 183, 0.5);
     border-radius: 20px;
     width: 300px;
     padding: 20px;
@@ -36,9 +37,10 @@
 
 .weather-widget .wind {
     font-size: 0.8vw;
-    color: #2b2118;
+    color: #4D1E10;
 }
 
 .weather-widget .current-date{
     font-size: 0.8vw;
+    color: #6F1A07;
 }

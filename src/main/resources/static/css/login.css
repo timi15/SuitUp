@@ -9,7 +9,7 @@ h1 {
     font-size: 3.5em;
     margin-top: 2em;
     margin-bottom: 0.5em;
-
+    padding-bottom: 0 !important;
 }
 
 h2 {
