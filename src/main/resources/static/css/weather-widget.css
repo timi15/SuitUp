@@ -1,4 +1,3 @@
-
 .weather-widget {
     margin-top: 5vw;
     display: flex;
@@ -6,6 +5,12 @@
     align-items: center;
     justify-content: center;
     gap: 1vw;
+    border: 2px solid gray;
+    border-radius: 20px;
+    width: 300px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .weather-widget .icon-info-container{
@@ -14,7 +19,7 @@
 }
 
 .weather-widget .weather-icon {
-    height: 7vw;
+    height: 3vw;
     object-fit: contain;
 }
 
@@ -25,15 +30,15 @@
 }
 
 .weather-widget .temperature {
-    font-size: 3vw;
+    font-size: 1.5vw;
     color: #6f1a07;
 }
 
 .weather-widget .wind {
-    font-size: 1.3vw;
+    font-size: 0.8vw;
     color: #2b2118;
 }
 
 .weather-widget .current-date{
-    font-size: 2vw;
+    font-size: 0.8vw;
 }

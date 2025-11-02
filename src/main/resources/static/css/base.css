@@ -11,7 +11,10 @@ body {
 
 h1 {
     text-align: center;
-    font-weight: bold;
+    font-weight: bolder;
+    padding: 30px;
+    letter-spacing: 3px;
+    font-style: italic;
 }
 
 .btn {
