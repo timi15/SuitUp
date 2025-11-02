@@ -107,12 +107,12 @@ public class RegistrationLoginSteps {
     @Then("a rendszer bejelentkezteti a felhasználót")
     public void a_rendszer_bejelentkezteti_a_felhasznalot() {
         assertThat(response.getResponse().getStatus()).isEqualTo(302);
-        assertThat(response.getResponse().getRedirectedUrl()).contains("/wardrobe-items");
+        assertThat(response.getResponse().getRedirectedUrl()).contains("/home");
     }
 
     @And("átirányítja a személyes tartalmak oldalára")
     public void atiranyitja_a_szemelyes_oldalara() {
-        assertThat(response.getResponse().getRedirectedUrl()).contains("/wardrobe-items");
+        assertThat(response.getResponse().getRedirectedUrl()).contains("/home");
     }
 
 

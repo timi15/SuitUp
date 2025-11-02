@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kezdő oldal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/outfits.css}">
+    <link rel="stylesheet" th:href="@{/css/weather-widget.css}">
+    <link rel="stylesheet" th:href="@{/css/weather-forecast-widget.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="full-weather-widget">
+    <div th:replace="fragments/weather-widget :: weather-widget"></div>
+    <div th:replace="fragments/weather-forecast-widget :: weather-forecast-widget"></div>
+</div>
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-4">Legkedveltebb ruhadarabjaid</h1>
+
+    <div class="alert  mt-3 text-center" th:if="${#lists.isEmpty(favourites)}">
+        <p class="mb-3 fs-5">Jelenleg nincs kedvenc ruhadarabod.</p>
+
+        <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary">
+            <i class="bi bi-plus-circle me-2"></i>
+            Ruhadarab hozzáadása
+        </a>
+
+        <a th:href="@{/outfits/save}" class="btn btn-outline-primary">
+            <i class="bi bi-plus-circle me-2"></i>
+            Outfit összeállítás
+        </a>
+    </div>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" th:each="item : ${favourites}">
+                <img th:src="${item.imageUrl}" alt="Favourite outfit" style="height: 20rem; object-fit: contain;">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        observer: true,
+        observeParents: true,
+        slidesPerView: 4,
+        spaceBetween: 10,
+
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+
+        },
+        breakpoints: {
+
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+
+            576: {
+                slidesPerView: 2,
+                spaceBetween: 15
+            },
+
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 25
+            },
+
+            1200: {
+                slidesPerView: 5,
+                spaceBetween: 30
+            }
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -18,4 +18,5 @@ public interface WardrobeItemService {
 
     void deleteById(Long userId, Long id);
 
+    List<WardrobeItemEntity> findFavouriteWardrobeItems(Long userId);
 }

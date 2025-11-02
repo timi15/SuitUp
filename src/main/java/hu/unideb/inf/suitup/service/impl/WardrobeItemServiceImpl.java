@@ -52,7 +52,7 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
 
     @Override
     public List<WardrobeItemEntity> findByType(Long userId, String type) {
-        return wardrobeItemRepository.findByUserIdAndType(userId, type );
+        return wardrobeItemRepository.findByUserIdAndType(userId, type);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
 
     @Override
     @Transactional
-    public void deleteById(Long userId,Long id) {
+    public void deleteById(Long userId, Long id) {
         WardrobeItemEntity item = findById(userId, id);
         UserEntity user = userRepository.findById(userId).get();
 
@@ -82,6 +82,11 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
         outfitRepository.deleteAll(outfitsToDelete);
         wardrobeItemRepository.deleteById(id);
 
+    }
+
+    @Override
+    public List<WardrobeItemEntity> findFavouriteWardrobeItems(Long userId) {
+        return wardrobeItemRepository.findFavouriteWardrobeItems(userId);
     }
 
 }
