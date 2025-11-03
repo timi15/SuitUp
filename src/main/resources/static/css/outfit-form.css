@@ -107,3 +107,21 @@ h4 {
 .carousel-grid {
     margin-bottom: 3em;
 }
+
+.outfit-header{
+    display:  flex;
+    flex-wrap: wrap;
+}
+
+@media  (max-width: 1000px) {
+    .outfit-header{
+        display:  flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .outfit-header > button, input{
+        width: 60%;
+    }
+
+}
