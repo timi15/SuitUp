@@ -43,7 +43,8 @@
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide" th:each="item : ${favourites}">
-                <img th:src="${item.imageUrl}" alt="Favourite outfit" style="height: 20rem; object-fit: contain;">
+                <img th:src="${item.imageUrl}" alt="Favourite outfit" class="zoom"
+                     style="width: auto; height: 10rem; min-width: 15rem; max-width: 15rem; object-fit: contain;">
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -69,27 +70,27 @@
 
             0: {
                 slidesPerView: 1,
-                spaceBetween: 10
+                spaceBetween: 0
             },
 
             576: {
                 slidesPerView: 2,
-                spaceBetween: 15
+                spaceBetween: 0
             },
 
             768: {
                 slidesPerView: 3,
-                spaceBetween: 20
+                spaceBetween: 0
             },
 
             992: {
                 slidesPerView: 4,
-                spaceBetween: 25
+                spaceBetween: 0
             },
 
             1200: {
                 slidesPerView: 5,
-                spaceBetween: 30
+                spaceBetween: 0
             }
         }
     });
