@@ -30,3 +30,17 @@ img {
 .delete-btn {
     width: 100%;
 }
+
+/* Modal */
+
+.modal-content {
+    background: #F7F3E3;
+    border: none;
+}
+
+.modal-header {
+    background: #6F1A07;
+    color: #F7F3E3;
+    border: none;
+    text-transform: capitalize;
+}

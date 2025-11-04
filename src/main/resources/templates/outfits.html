@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="card-footer d-flex justify-content-end">
-                    <button class="btn" data-bs-toggle="modal"
+                    <button class="btn edit-btn" data-bs-toggle="modal"
                             th:attr="data-bs-target='#itemsModal-' + ${outfit.id}">
                         <i class="bi bi-eye"></i>
                     </button>
@@ -95,6 +95,7 @@
                         <div class="modal-content">
 
                             <div class="modal-header">
+                                <h5 class="modal-title" th:text="${outfit.title}"></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Bezárás"></button>
                             </div>
@@ -106,9 +107,6 @@
                                          style="width: 9rem; height: auto; object-fit: contain;">
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
