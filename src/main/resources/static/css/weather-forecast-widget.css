@@ -1,9 +1,10 @@
 .full-weather-widget{
     display: flex;
+    flex-wrap: wrap;
     text-align: center;
     justify-content: center;
-    gap: 6vw;
-    margin: 1vw;
+    gap: 2rem;
+    margin: 1rem;
 }
 
 .weather-widget{
@@ -12,7 +13,7 @@
 
 .forecast-container {
     display: flex;
-    gap: 1vw;
+    gap: 1rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
 }
@@ -30,20 +31,53 @@
     border: #6F1A07 solid 3px;
     border-radius: 20px;
     background-color: rgba(179, 182, 183, 0.5);
-    padding: 20px;
+    padding: 1rem;
     height: 8.5rem;
 }
 
 .forecast-hour .time {
-    font-size: 1vw;
+    font-size: 0.9rem;
     color: #4D1E10;
 }
 
 .forecast-hour .forecast-icon {
-    max-height: 3vw;
+    max-height: 2.5rem;
 }
 
 .forecast-hour .temp {
-    font-size: 1vw;
+    font-size: 1rem;
     color: #6F1A07;
+}
+
+@media (max-width: 768px) {
+    .full-weather-widget {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .weather-widget {
+        width: 90%;
+        max-width: 400px;
+        padding: 1rem;
+    }
+
+    .weather-widget .temperature {
+        font-size: 1.3rem;
+    }
+
+    .weather-widget .weather-icon {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .forecast-hour {
+        width: 4rem;
+        padding: 0.8rem;
+    }
+
+    .forecast-hour .time,
+    .forecast-hour .temp {
+        font-size: 0.8rem;
+    }
 }

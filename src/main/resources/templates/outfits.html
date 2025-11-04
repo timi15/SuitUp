@@ -35,7 +35,7 @@
 
     <div class="row g-4">
         <div class="col-md-4" th:each="outfit : ${outfits}">
-            <div class="card shadow-sm" style="width: 22rem;">
+            <div class="card shadow-sm">
 
                 <div class="card-body">
                     <div id="carousel-outfit-[[${outfit.id}]]" class="carousel slide" data-bs-ride="carousel"
@@ -54,25 +54,21 @@
                     <div>
                         <h2 class="card-title" th:text="${outfit.title}">Outfit neve</h2>
 
-                        <table>
-                            <tr>
-                                <td>
-                                    <img th:src="${outfit.imageUrl}"
-                                         class="card-img-top"
-                                         alt="Outfit kép"
-                                         style="width: 9rem; height: auto; object-fit: contain;">
-                                </td>
-                                <td>
-                                    <p>
-                                        <span class="date"
-                                              th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
-                                    </p>
-                                    <p>
-                                        <span class="badge" th:text="${outfit.season}"></span>
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 mt-3">
+                            <img th:src="${outfit.imageUrl}"
+                                 alt="Outfit kép"
+                                 class="img-fluid rounded"
+                                 style="max-width: 8rem; height: auto; object-fit: contain;">
+
+                            <div class="text-center text-md-start">
+                                <p class="mb-1">
+                                    <span class="date fw-semibold" th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
+                                </p>
+                                <p class="mb-0">
+                                    <span class="badge" th:text="${outfit.season}"></span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -89,7 +85,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade"  th:attr="id='itemsModal-' + ${outfit.id}" tabindex="-1"
+                <div class="modal fade" th:attr="id='itemsModal-' + ${outfit.id}" tabindex="-1"
                      aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">

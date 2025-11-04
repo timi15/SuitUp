@@ -120,7 +120,7 @@ h4 {
         flex-wrap: wrap;
         align-content: center;
     }
-    .outfit-header > button, input{
+    .outfit-header > *{
         width: 60%;
     }
 

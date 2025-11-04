@@ -19,10 +19,6 @@ img {
     font-size: 1.1em;
 }
 
-.card {
-    height: 42rem;
-}
-
 .carousel-item {
     transition: transform 2s ease-in-out;
 }
@@ -43,4 +39,14 @@ img {
     color: #F7F3E3;
     border: none;
     text-transform: capitalize;
+}
+
+@media (max-width: 576px) {
+    .d-flex.flex-wrap img {
+        max-width: 100%;
+    }
+
+    .d-flex.flex-wrap .text-center {
+        width: 100%;
+    }
 }

@@ -4,23 +4,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1vw;
+    gap: 0.8rem;
     border: 3px solid #6F1A07;
     background-color: rgba(179, 182, 183, 0.5);
     border-radius: 20px;
     width: 300px;
-    padding: 20px;
+    padding: 1rem;
     margin-right: auto;
     margin-left: auto;
 }
 
 .weather-widget .icon-info-container{
     display: flex;
-    gap: 2vw;
+    align-items: center;
+    gap: 1rem;
 }
 
 .weather-widget .weather-icon {
-    height: 3vw;
+    height: 3rem;
+    width: 3rem;
     object-fit: contain;
 }
 
@@ -31,16 +33,16 @@
 }
 
 .weather-widget .temperature {
-    font-size: 1.5vw;
+    font-size: 1.5rem;
     color: #6f1a07;
 }
 
 .weather-widget .wind {
-    font-size: 0.8vw;
+    font-size: 0.9rem;
     color: #4D1E10;
 }
 
 .weather-widget .current-date{
-    font-size: 0.8vw;
+    font-size: 0.9rem;
     color: #6F1A07;
 }
