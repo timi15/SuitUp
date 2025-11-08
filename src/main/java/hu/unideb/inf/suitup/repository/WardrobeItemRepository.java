@@ -25,4 +25,6 @@ public interface WardrobeItemRepository extends JpaRepository<WardrobeItemEntity
         LIMIT 10
         """, nativeQuery = true)
     List<WardrobeItemEntity> findFavouriteWardrobeItems(@Param("user") Long userId);
+
+    List<WardrobeItemEntity> findByUserIdAndSeason(Long userId, String season);
 }

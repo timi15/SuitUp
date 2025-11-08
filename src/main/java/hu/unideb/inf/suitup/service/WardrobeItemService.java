@@ -19,4 +19,6 @@ public interface WardrobeItemService {
     void deleteById(Long userId, Long id);
 
     List<WardrobeItemEntity> findFavouriteWardrobeItems(Long userId);
+
+    List<WardrobeItemEntity> findBySeason(Long userId, String season);
 }

@@ -89,4 +89,8 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
         return wardrobeItemRepository.findFavouriteWardrobeItems(userId);
     }
 
+    @Override
+    public List<WardrobeItemEntity> findBySeason(Long userId, String season) {
+        return wardrobeItemRepository.findByUserIdAndSeason(userId, season);
+    }
 }
