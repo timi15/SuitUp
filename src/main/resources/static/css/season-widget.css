@@ -13,8 +13,8 @@
 .banner .slider {
     position: absolute;
     /*kep merete*/
-    width: 15vw;
-    height: 20vw;
+    width: clamp(150px, 20vw, 250px);
+    height:  clamp(225px, 30vw, 375px);
     top: 10%;
     left: calc(50% - 100px);
     transform-style: preserve-3d;
@@ -38,13 +38,13 @@
     inset: 0;
     transform:
             rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(500px);
+            translateZ(clamp(150px, 25vw, 300px));
 }
 
 .banner .slider .item img {
     width: 100%;
-    height: 100%;
-    border-radius: 10px;
+    height: auto;
+    border-radius: 1rem;
     object-fit: cover;
     box-shadow: 0 5px 15px rgba(0,0,0,0.4);
     background: #fff;

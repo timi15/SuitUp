@@ -24,9 +24,20 @@
 </div>
 
 <div class="banner">
-    <div class="content">
+    <div class="content" style="width: 100%">
         <h1 th:text="${currentSeason} + ' ruhadarabjaid'"></h1>
+        <div class="alert mt-3 text-center"  th:if="${#lists.isEmpty(seasonalItems)}">
+            <p class="mb-3 fs-5" th:text="'Jelenleg nincs '+  ${currentSeason} + ' ruhadarabod.'">Jelenleg nincs kedvenc
+                ruhadarabod.</p>
+
+            <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary" >
+                <i class="bi bi-plus-circle me-2"></i>
+                Ruhadarab hozzáadása
+            </a>
+        </div>
     </div>
+
+
 
     <div class="slider" th:style="'--quantity:' + ${#lists.size(seasonalItems)}">
         <div class="item"
