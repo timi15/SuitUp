@@ -17,3 +17,10 @@
 .swiper-pagination {
     bottom: 10px !important;
 }
+
+h2 {
+    text-transform: capitalize;
+    padding-bottom: 1em;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
