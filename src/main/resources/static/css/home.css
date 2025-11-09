@@ -21,6 +21,10 @@
     bottom: 10px !important;
 }
 
+.container {
+    margin-top: 2em;
+}
+
 h2 {
     text-transform: capitalize;
     padding-bottom: 1em;
@@ -33,4 +37,10 @@ h2 {
     border: #6F1A07 solid;
     border-radius: 10px;
     margin-bottom: 0.5em;
+}
+
+h1 {
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    padding-top: 0.5em;
 }

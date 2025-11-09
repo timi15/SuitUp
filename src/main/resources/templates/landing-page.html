@@ -21,58 +21,27 @@
     <div th:replace="fragments/weather-forecast-widget :: weather-forecast-widget"></div>
 </div>
 
-<div class="banner">
-    <div class="content" style="width: 100%">
-        <h2 th:text="${currentSeason} + ' ruhadarabjaid'"></h2>
-        <div class="alert mt-3 text-center"  th:if="${#lists.isEmpty(seasonalItems)}">
-            <p class="mb-3 fs-5" th:text="'Jelenleg nincs '+  ${currentSeason} + ' ruhadarabod.'">Jelenleg nincs kedvenc
-                ruhadarabod.</p>
+<h1>Üdvözlünk a SuitUp!-ban!</h1>
 
-            <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary" >
-                <i class="bi bi-plus-circle me-2"></i>
-                Ruhadarab hozzáadása
-            </a>
-        </div>
-    </div>
+<div class="container">
 
+    <h2 th:text="${currentSeason} + ' ruhadarabjaid'" style="text-align: center"></h2>
 
+    <div class="alert mt-3 text-center"  th:if="${#lists.isEmpty(seasonalItems)}">
+        <p class="mb-3 fs-5" th:text="'Jelenleg nincs '+  ${currentSeason} + ' ruhadarabod.'">Jelenleg nincs kedvenc
+            ruhadarabod.</p>
 
-    <div class="slider" th:style="'--quantity:' + ${#lists.size(seasonalItems)}">
-        <div class="item"
-             th:each="item, iterStat : ${seasonalItems}"
-             th:style="'--position:' + ${iterStat.index + 1}">
-            <a th:href="@{/outfits/save(selectedId=${item.id}, type=${item.type})}">
-                <img title="Kattints a képre, és készíts vele outfitet!" th:src="${item.imageUrl}" th:alt="${item.type}"
-                     style="width: auto; height: 10rem; min-width: 15rem; max-width: 15rem; object-fit: contain;">
-            </a>
-        </div>
-    </div>
-</div>
-
-
-<div class="container mt-5">
-
-    <h2 class="text-center mb-4">Legkedveltebb ruhadarabjaid</h2>
-
-    <div class="alert  mt-3 text-center" th:if="${#lists.isEmpty(favourites)}">
-        <p class="mb-3 fs-5">Jelenleg nincs kedvenc ruhadarabod.</p>
-
-        <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary">
+        <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary" >
             <i class="bi bi-plus-circle me-2"></i>
             Ruhadarab hozzáadása
-        </a>
-
-        <a th:href="@{/outfits/save}" class="btn btn-outline-primary">
-            <i class="bi bi-plus-circle me-2"></i>
-            Outfit összeállítás
         </a>
     </div>
 
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" th:each="item : ${favourites}">
+            <div class="swiper-slide" th:each="item : ${seasonalItems}">
                 <a th:href="@{/outfits/save(selectedId=${item.id}, type=${item.type})}">
-                    <img title="Kattints a képre, és készíts vele outfitet!" th:src="${item.imageUrl}" alt="Favourite outfit" class="zoom"
+                    <img title="Kattints a képre, és készíts vele outfitet!" th:src="${item.imageUrl}" th:alt="${item.type}" class="zoom"
                          style="width: auto; height: 10rem; min-width: 15rem; max-width: 15rem; object-fit: contain;">
                 </a>
             </div>
@@ -80,7 +49,39 @@
         <div class="swiper-pagination"></div>
     </div>
 
+</div>
 
+<div class="banner">
+    <div class="content" style="width: 100%">
+
+        <h2 class="text-center mb-4">Legkedveltebb ruhadarabjaid</h2>
+
+        <div class="alert  mt-3 text-center" th:if="${#lists.isEmpty(favourites)}">
+            <p class="mb-3 fs-5">Jelenleg nincs kedvenc ruhadarabod.</p>
+
+            <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary">
+                <i class="bi bi-plus-circle me-2"></i>
+                Ruhadarab hozzáadása
+            </a>
+
+            <a th:href="@{/outfits/save}" class="btn btn-outline-primary">
+                <i class="bi bi-plus-circle me-2"></i>
+                Outfit összeállítás
+            </a>
+        </div>
+
+    </div>
+
+    <div class="slider" th:style="'--quantity:' + ${#lists.size(favourites)}">
+        <div class="item"
+             th:each="item, iterStat : ${favourites}"
+             th:style="'--position:' + ${iterStat.index + 1}">
+            <a th:href="@{/outfits/save(selectedId=${item.id}, type=${item.type})}">
+                <img title="Kattints a képre, és készíts vele outfitet!" th:src="${item.imageUrl}" th:alt="${item.type}"
+                     style="width: auto; height: 9rem; min-width: 15rem; max-width: 15rem; object-fit: contain;">
+            </a>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
