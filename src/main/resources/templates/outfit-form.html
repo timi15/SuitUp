@@ -18,7 +18,7 @@
     <div th:replace="fragments/weather-forecast-widget :: weather-forecast-widget"></div>
 </div>
 
-<h1 class="text-center my-4">Új outfit készítése</h1>
+<h1 class="text-center my-4">Új outfit összeállítása</h1>
 
 <form class="needs-validation container text-center" th:action="@{/outfits/save}" th:object="${outfit}" method="post"
       novalidate>
@@ -26,12 +26,12 @@
     <div class="outfit-header mb-4 row outfit-form align-items-end">
 
         <div class="col-6 mb-4 custom-col-text">
-            <label for="outfit-name" class="form-label text-start w-100">Outfit neve<sup class="required-field">*</sup></label>
+            <label title="Kötelező a mezőt kitölteni!" for="outfit-name" class="form-label text-start w-100">Outfit neve<sup class="required-field">*</sup></label>
             <input type="text" id="outfit-name" class="form-control" th:field="*{title}" placeholder="pl.: Office chic" required>
         </div>
 
         <div class="col-6 mb-4 custom-col">
-            <select class="form-select" th:field="*{season}" required>
+            <select  title="Kötelező választani!" class="form-select" th:field="*{season}" required>
                 <option value="" selected hidden>Évszak<sup class="required-field">*</sup></option>
                 <option value="Tavasz">Tavasz</option>
                 <option value="Nyár">Nyár</option>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-6 mb-4 custom-col-text">
-            <label for="imageUrl" class="form-label text-start w-100">Outfit képének linkje<sup class="required-field">*</sup></label>
+            <label title="Kötelező a mezőt kitölteni!" for="imageUrl" class="form-label text-start w-100">Outfit képének linkje<sup class="required-field">*</sup></label>
             <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}"
                    placeholder="pl.: https://példa.hu/outfit.png" required>
         </div>
@@ -283,6 +283,40 @@
     </div>
 
 </form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedId = urlParams.get('selectedId');
+        const type = urlParams.get('type');
+
+        if(selectedId && type) {
+            let carouselId = '';
+            switch(type) {
+                case 'felső': carouselId = 'topsCarousel'; break;
+                case 'kabát': carouselId = 'jacketsCarousel'; break;
+                case 'egyrészes': carouselId = 'dressesCarousel'; break;
+                case 'nadrág/szoknya': carouselId = 'pantsCarousel'; break;
+                case 'cipő': carouselId = 'shoesCarousel'; break;
+                case 'kiegészítő': carouselId = 'accessoriesCarousel'; break;
+            }
+
+            if(carouselId) {
+                const carousel = document.getElementById(carouselId);
+                if(carousel) {
+                    const items = carousel.querySelectorAll('.carousel-item');
+                    items.forEach(item => item.classList.remove('active'));
+                    const selectedItem = carousel.querySelector(`.carousel-item[data-id="${selectedId}"]`);
+                    if(selectedItem) {
+                        selectedItem.classList.add('active');
+                    } else {
+                        items[0].classList.add('active');
+                    }
+                }
+            }
+        }
+    });
+</script>
 
 <script th:src="@{/js/outfit-form.js}"></script>
 <script th:src="@{/js/validation.js}"></script>

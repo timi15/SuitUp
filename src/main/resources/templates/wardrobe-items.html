@@ -39,6 +39,10 @@
 
             <div class="card">
 
+                <a th:href="@{/outfits/save(selectedId=${item.id}, type=${item.type})}">
+                    <i title="Készíts vele outfitet!" class="bi bi-plus-circle plus fs-4"></i>
+                </a>
+
                 <div class="card-header" style="height: 20rem; align-content: center">
                     <img th:src="${item.imageUrl}" class="card-img-top" th:alt="${item.type}"
                          style="max-height: 20rem; object-fit: contain;">

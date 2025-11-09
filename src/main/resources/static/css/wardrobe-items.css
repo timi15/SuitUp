@@ -9,7 +9,7 @@ img:not(.forecast-icon, .weather-icon) {
 
 .card {
     max-width: 18rem;
-    min-height: 550px;
+    min-height: 585px;
 }
 
 .card-header {
@@ -47,4 +47,13 @@ img:not(.forecast-icon, .weather-icon) {
 
 .modal-footer {
     border: none;
+}
+
+.plus {
+    color: #6F1A07;
+    padding-left: 0.25em;
+}
+
+.plus:hover {
+    color: #4D1E10;
 }

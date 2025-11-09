@@ -34,7 +34,7 @@
             </div>
 
             <div class="col-12 col-md-7 mb-4 order-2 order-md-1">
-                <label for="imageUrl" class="form-label">Ruhadarab képének linkje<sup class="required-field">*</sup></label>
+                <label title="Kötelező a mezőt kitölteni!" for="imageUrl" class="form-label">Ruhadarab képének linkje<sup class="required-field">*</sup></label>
                 <input type="text" class="form-control mb-4" id="imageUrl" th:field="*{imageUrl}"
                        placeholder="pl.: https://példa.hu/ruha.png" required>
 
@@ -42,7 +42,7 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <select id="type" th:field="*{type}" class="form-select" required>
+                        <select title="Kötelező választani!" id="type" th:field="*{type}" class="form-select" required>
                             <option value="" selected hidden>Típus*</option>
                             <option value="felső">Felső</option>
                             <option value="nadrág/szoknya">Nadrág/Szoknya</option>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <select id="season" th:field="*{season}" class="form-select" required>
+                        <select title="Kötelező választani!" id="season" th:field="*{season}" class="form-select" required>
                             <option value="" selected hidden>Évszak*</option>
                             <option value="téli">Téli</option>
                             <option value="tavaszi">Tavaszi</option>
@@ -68,7 +68,7 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <select id="color" th:field="*{color}" class="form-select" required>
+                        <select title="Kötelező választani!" id="color" th:field="*{color}" class="form-select" required>
                             <option value="" selected hidden>Szín*</option>
                             <option value="piros">Piros</option>
                             <option value="fekete">Fekete</option>
