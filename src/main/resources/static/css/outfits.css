@@ -27,6 +27,19 @@ img {
     width: 100%;
 }
 
+.badge {
+    margin-top: 1em;
+}
+
+.card {
+    max-width: 22rem;
+    min-height: 675px;
+}
+
+.btn {
+    width: 48%;
+}
+
 /* Modal */
 
 .modal-content {

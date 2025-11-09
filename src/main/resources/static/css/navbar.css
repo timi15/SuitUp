@@ -82,7 +82,10 @@ button:hover {
     border-radius: 1rem;
     padding: 1rem;
 }
-.weather-btn, .weather-btn:hover, .weather-btn:active, .weather-btn:focus {
+
+.weather-btn,
+.weather-btn:focus,
+.weather-btn:active {
     background-color: #6F1A07 !important;
     border-radius: 15px !important;
     width: 3rem !important;
@@ -94,5 +97,10 @@ button:hover {
     margin-top: 1em;
     margin-left: 2em;
     color: #F7F3E3 !important;
+    border: none;
 }
 
+.weather-btn:hover {
+    color: #B3B6B7 !important;
+    background-color: #6F1A07 !important;
+}
