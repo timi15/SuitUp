@@ -32,6 +32,9 @@ public class OutfitEntity {
     @Column(name = "image_url", nullable = false, columnDefinition = "TEXT")
     private String imageUrl;
 
+    @Column(name = "topics", nullable = true, columnDefinition = "TEXT")
+    private String topics;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;

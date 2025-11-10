@@ -27,12 +27,14 @@
     <div class="outfit-header mb-4 row outfit-form align-items-end">
 
         <div class="col-6 mb-4 custom-col-text">
-            <label title="Kötelező a mezőt kitölteni!" for="outfit-name" class="form-label text-start w-100">Outfit neve<sup class="required-field">*</sup></label>
-            <input type="text" id="outfit-name" class="form-control" th:field="*{title}" placeholder="pl.: Office chic" required>
+            <label title="Kötelező a mezőt kitölteni!" for="outfit-name" class="form-label text-start w-100">Outfit neve<sup
+                    class="required-field">*</sup></label>
+            <input type="text" id="outfit-name" class="form-control" th:field="*{title}" placeholder="pl.: Office chic"
+                   required>
         </div>
 
         <div class="col-6 mb-4 custom-col">
-            <select  title="Kötelező választani!" class="form-select" th:field="*{season}" required>
+            <select title="Kötelező választani!" class="form-select" th:field="*{season}" required>
                 <option value="" selected hidden>Évszak<sup class="required-field">*</sup></option>
                 <option value="Tavasz">Tavasz</option>
                 <option value="Nyár">Nyár</option>
@@ -41,8 +43,18 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label for="tagInput" class="form-label">Topics (double space to add)</label>
+            <div id="tagContainer" class="form-control d-flex flex-wrap gap-2 align-items-center"
+                 style="min-height: 45px;">
+                <input id="tagInput" type="text" class="border-0 flex-grow-1 form-control" placeholder="Írj ide...">
+            </div>
+            <input type="hidden" id="hiddenTopics" name="topics">
+        </div>
+
         <div class="col-6 mb-4 custom-col-text">
-            <label title="Kötelező a mezőt kitölteni!" for="imageUrl" class="form-label text-start w-100">Outfit képének linkje<sup class="required-field">*</sup></label>
+            <label title="Kötelező a mezőt kitölteni!" for="imageUrl" class="form-label text-start w-100">Outfit képének
+                linkje<sup class="required-field">*</sup></label>
             <input class="form-control" type="text" id="imageUrl" th:field="*{imageUrl}"
                    placeholder="pl.: https://példa.hu/outfit.png" required>
         </div>
@@ -285,30 +297,101 @@
 
 </form>
 
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    const tagContainer = document.getElementById('tagContainer');
+    const tagInput = document.getElementById('tagInput');
+    const hiddenTopics = document.getElementById('hiddenTopics');
+    let tags = [];
+    let spaceCount = 0;
+
+    function updateHiddenInput() {
+        hiddenTopics.value = tags.join(' ');
+    }
+
+    function createTag(label) {
+        const badge = document.createElement('span');
+        badge.classList.add('badge', 'bg-dark', 'd-flex', 'align-items-center');
+        badge.style.gap = '6px';
+        badge.innerHTML = `
+      ${label}
+      <button type="button" class="btn-close btn-close-white btn-sm" aria-label="Remove"></button>
+    `;
+
+        badge.querySelector('.btn-close').addEventListener('click', () => {
+            removeTag(label);
+        });
+
+        tagContainer.insertBefore(badge, tagInput);
+    }
+
+    function removeTag(label) {
+        tags = tags.filter(tag => tag !== label);
+        renderTags();
+    }
+
+    function renderTags() {
+        document.querySelectorAll('#tagContainer .badge').forEach(tag => tag.remove());
+        tags.forEach(createTag);
+        updateHiddenInput();
+    }
+
+    tagInput.addEventListener('keydown', (e) => {
+        if (e.key === ' ') {
+            spaceCount++;
+            if (spaceCount === 2) {
+                e.preventDefault();
+                const newTag = tagInput.value.trim();
+                if (newTag && !tags.includes(newTag)) {
+                    tags.push(newTag);
+                    renderTags();
+                }
+                tagInput.value = '';
+                spaceCount = 0;
+            }
+        } else {
+            spaceCount = 0;
+        }
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(window.location.search);
         const selectedId = urlParams.get('selectedId');
         const type = urlParams.get('type');
 
-        if(selectedId && type) {
+        if (selectedId && type) {
             let carouselId = '';
-            switch(type) {
-                case 'felső': carouselId = 'topsCarousel'; break;
-                case 'kabát': carouselId = 'jacketsCarousel'; break;
-                case 'egyrészes': carouselId = 'dressesCarousel'; break;
-                case 'nadrág/szoknya': carouselId = 'pantsCarousel'; break;
-                case 'cipő': carouselId = 'shoesCarousel'; break;
-                case 'kiegészítő': carouselId = 'accessoriesCarousel'; break;
+            switch (type) {
+                case 'felső':
+                    carouselId = 'topsCarousel';
+                    break;
+                case 'kabát':
+                    carouselId = 'jacketsCarousel';
+                    break;
+                case 'egyrészes':
+                    carouselId = 'dressesCarousel';
+                    break;
+                case 'nadrág/szoknya':
+                    carouselId = 'pantsCarousel';
+                    break;
+                case 'cipő':
+                    carouselId = 'shoesCarousel';
+                    break;
+                case 'kiegészítő':
+                    carouselId = 'accessoriesCarousel';
+                    break;
             }
 
-            if(carouselId) {
+            if (carouselId) {
                 const carousel = document.getElementById(carouselId);
-                if(carousel) {
+                if (carousel) {
                     const items = carousel.querySelectorAll('.carousel-item');
                     items.forEach(item => item.classList.remove('active'));
                     const selectedItem = carousel.querySelector(`.carousel-item[data-id="${selectedId}"]`);
-                    if(selectedItem) {
+                    if (selectedItem) {
                         selectedItem.classList.add('active');
                     } else {
                         items[0].classList.add('active');
