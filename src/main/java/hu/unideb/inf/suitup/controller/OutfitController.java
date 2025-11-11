@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("outfits")
 @RequiredArgsConstructor
@@ -21,6 +23,8 @@ public class OutfitController {
     @GetMapping("")
     public String showOutfitsPage(Model model) {
         Long userId = userService.getCurrentUserId();
+        List<OutfitEntity> outfits = outfitService.findAll(userId);
+        outfits.forEach(OutfitEntity::prepareTopicList);
         model.addAttribute("outfits", outfitService.findAll(userId));
         return "outfits";
     }

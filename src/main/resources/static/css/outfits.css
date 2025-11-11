@@ -63,3 +63,13 @@ img {
         width: 100%;
     }
 }
+
+.badge {
+    margin-bottom: 0;
+}
+
+.topic {
+    border: #6F1A07 solid 2px;
+    background-color: #B3B6B7;
+    color: #4D1E10;
+}

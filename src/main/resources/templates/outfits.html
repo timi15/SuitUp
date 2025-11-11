@@ -55,21 +55,26 @@
                     <div>
                         <h2 class="card-title" th:text="${outfit.title}">Outfit neve</h2>
 
-                        <div class="d-flex flex-wrap align-items-center justify-content-center gap-3 mt-3">
+                        <div class="d-flex gap-3 mt-3">
+
                             <img th:src="${outfit.imageUrl}"
                                  alt="Outfit kép"
                                  class="img-fluid rounded"
                                  style="width: 10rem; height: auto; min-height: 15rem; max-height: 15rem; object-fit: contain;">
 
-                            <div class="text-center text-md-start">
-                                <p class="mb-1">
-                                    <span class="date fw-semibold" th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
-                                </p>
-                                <p class="mb-0">
-                                    <span class="badge" th:text="${outfit.season}"></span>
-                                </p>
+                            <div class="d-flex flex-column justify-content-center">
+
+                                <span class="date fw-semibold" th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
+
+                                <span class="badge" th:text="${outfit.season}"></span>
+
+                                <span th:if="${outfit.topicList != null && !#lists.isEmpty(outfit.topicList)}"
+                                     class="d-flex flex-wrap gap-2" style="max-width: 100%;">
+                                    <span class="badge topic" th:each="topic : ${outfit.topicList}" th:text="${topic}"></span>
+                                </span>
                             </div>
                         </div>
+
                     </div>
 
 
