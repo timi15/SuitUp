@@ -32,7 +32,7 @@ A cél egy olyan platform létrehozása, ahol a felhasználók digitálisan rend
 
 | Technológia | Szerepe |
 |--------------|----------|
-| **Spring Boot** | Backend (REST API, üzleti logika, adatkezelés) |
+| **Spring Boot** | Backend (üzleti logika, adatkezelés) |
 | **Thymeleaf** | Frontend (szerveroldali sablonkezelés) |
 | **PostgreSQL** | Adatbázis (felhasználók, ruhadarabok, outfitek tárolása) |
 

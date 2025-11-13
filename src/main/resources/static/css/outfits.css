@@ -68,8 +68,30 @@ img {
     margin-bottom: 0;
 }
 
-.topic {
+.topic, .topic-sum {
     border: #6F1A07 solid 2px;
     background-color: #B3B6B7;
     color: #4D1E10;
+}
+
+.topic-sum {
+    margin: 0 0.5em 5em 0;
+}
+
+.topic-sum:hover {
+    background-color: #6F1A07;
+    color: #F7F3E3;
+}
+
+.topic-sum:active, .topic-sum:focus {
+    background-color: #4D1E10;
+    color: #F7F3E3;
+}
+
+h1 {
+    padding-bottom: 0.5em !important;
+}
+
+#showAll {
+    border: #6F1A07 solid 2px;
 }

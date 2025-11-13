@@ -9,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("outfits")
@@ -25,7 +28,14 @@ public class OutfitController {
         Long userId = userService.getCurrentUserId();
         List<OutfitEntity> outfits = outfitService.findAll(userId);
         outfits.forEach(OutfitEntity::prepareTopicList);
+
+        Set<String> uniqueTopics = outfits.stream()
+                .flatMap(o -> o.getTopicList().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
         model.addAttribute("outfits", outfitService.findAll(userId));
+        model.addAttribute("uniqueTopics", uniqueTopics);
+
         return "outfits";
     }
 

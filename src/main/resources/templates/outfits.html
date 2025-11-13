@@ -23,6 +23,11 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Outfiteim</h1>
 
+    <div class="filters text-center">
+        <button class="badge topic-sum" th:each="topic : ${uniqueTopics}" th:text="${topic}"></button>
+        <button class="badge" id="showAll">Összes</button>
+    </div>
+
     <div class="alert  mt-3 text-center" th:if="${#lists.isEmpty(outfits)}">
 
         <p class="mb-3 fs-5">Nincs elérhető outfit.</p>
@@ -117,6 +122,43 @@
     </div>
 </div>
 
+<script>
+    document.querySelectorAll(".topic-sum").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const selectedTopic = btn.textContent.trim().toLowerCase();
+
+            document.querySelectorAll(".col-md-4").forEach(card => {
+
+                const badges = card.querySelectorAll(".badge.topic");
+
+                if (badges.length === 0) {
+                    card.style.display = "none";
+                    return;
+                }
+
+                let match = false;
+                badges.forEach(badge => {
+                    const topicText = badge.textContent.trim().toLowerCase();
+                    if (topicText === selectedTopic) {
+                        match = true;
+                    }
+                });
+
+                if (match) {
+                    card.style.display = "";
+                }
+                else {
+                    card.style.display = "none";
+                }
+            })
+        })
+    })
+
+    const showAll = document.getElementById("showAll");
+    showAll.addEventListener("click", (e) => {
+        window.location.reload();
+    })
+</script>
 
 <script th:src="@{/js/delete-confirmation.js}"></script>
 <script th:src="@{/js/logout-confirmation.js}"></script>
