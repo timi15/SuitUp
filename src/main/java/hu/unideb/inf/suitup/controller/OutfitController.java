@@ -1,5 +1,6 @@
 package hu.unideb.inf.suitup.controller;
 
+import hu.unideb.inf.suitup.dto.OutfitFilter;
 import hu.unideb.inf.suitup.entity.OutfitEntity;
 import hu.unideb.inf.suitup.service.OutfitService;
 import hu.unideb.inf.suitup.service.UserService;
@@ -75,5 +76,24 @@ public class OutfitController {
         Long userId = userService.getCurrentUserId();
         outfitService.deleteById(userId, id);
         return "redirect:/outfits";
+    }
+
+    @GetMapping("/filter")
+    public String filterOutfits(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String season,
+            Model model
+    ) {
+        OutfitFilter filter = new OutfitFilter();
+        filter.setTitle(title);
+        filter.setSeason(season);
+
+        Long userId = userService.getCurrentUserId();
+        List<OutfitEntity> outfits = outfitService.filter(userId, filter);
+
+        model.addAttribute("outfits", outfits);
+        model.addAttribute("filter", filter);
+
+        return "outfits";
     }
 }

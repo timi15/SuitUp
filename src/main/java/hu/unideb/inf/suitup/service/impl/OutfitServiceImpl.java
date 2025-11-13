@@ -1,5 +1,6 @@
 package hu.unideb.inf.suitup.service.impl;
 
+import hu.unideb.inf.suitup.dto.OutfitFilter;
 import hu.unideb.inf.suitup.entity.OutfitEntity;
 import hu.unideb.inf.suitup.entity.UserEntity;
 import hu.unideb.inf.suitup.entity.WardrobeItemEntity;
@@ -7,8 +8,11 @@ import hu.unideb.inf.suitup.repository.OutfitRepository;
 import hu.unideb.inf.suitup.repository.UserRepository;
 import hu.unideb.inf.suitup.repository.WardrobeItemRepository;
 import hu.unideb.inf.suitup.service.OutfitService;
+import hu.unideb.inf.suitup.specification.OutfitSpecification;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -77,5 +81,18 @@ public class OutfitServiceImpl implements OutfitService {
             Optional<WardrobeItemEntity> item = wardrobeItemRepository.findById(itemId);
             item.ifPresent(selectedItems::add);
         }
+    }
+
+    public List<OutfitEntity> filter(Long userId, OutfitFilter filter) {
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + userId));
+
+        Specification<OutfitEntity> spec = Specification
+        .where(OutfitSpecification.belongsToUser(user))
+        .and(OutfitSpecification.titleContains(filter.getTitle()))
+        .and(OutfitSpecification.seasonEquals(filter.getSeason()));
+
+
+        return outfitRepository.findAll(spec);
     }
 }

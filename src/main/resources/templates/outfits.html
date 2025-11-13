@@ -23,6 +23,37 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Outfiteim</h1>
 
+    <form action="/outfits/filter" method="get" class="mb-4">
+
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <input type="text" name="title" class="form-control"
+                    placeholder="Név szerint..." 
+                    th:value="${filter?.title}">
+            </div>
+
+            <div class="col-md-4">
+                <select name="season" class="form-select">
+                    <option value="">Évszak</option>
+                    <option value="Tavasz" th:selected="${filter?.season == 'Tavasz'}">Tavasz</option>
+                    <option value="Nyár" th:selected="${filter?.season == 'Nyár'}">Nyár</option>
+                    <option value="Ősz" th:selected="${filter?.season == 'Ősz'}">Ősz</option>
+                    <option value="Tél" th:selected="${filter?.season == 'Tél'}">Tél</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">Szűrés</button>
+            </div>
+
+            <div class="col-md-2">
+                <a href="/outfits" class="btn btn-secondary w-100">Szűrés törlése</a>
+            </div>
+
+        </div>
+    </form>
+
     <div class="filters text-center">
         <button class="badge topic-sum" th:each="topic : ${uniqueTopics}" th:text="${topic}"></button>
         <button class="badge" id="showAll">Összes</button>
