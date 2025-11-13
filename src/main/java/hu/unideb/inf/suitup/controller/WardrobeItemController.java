@@ -1,5 +1,6 @@
 package hu.unideb.inf.suitup.controller;
 
+import hu.unideb.inf.suitup.dto.WardrobeItemFilter;
 import hu.unideb.inf.suitup.entity.WardrobeItemEntity;
 import hu.unideb.inf.suitup.service.UserService;
 import hu.unideb.inf.suitup.service.WardrobeItemService;
@@ -74,6 +75,13 @@ public class WardrobeItemController {
         return "redirect:/wardrobe-items";
     }
 
-
-
+    @GetMapping("/filter")
+    public String filterWardrobeItems(
+            @ModelAttribute("filter") WardrobeItemFilter filter,
+            Model model
+    ) {
+        Long userId = userService.getCurrentUserId();
+        model.addAttribute("wardrobeItems", wardrobeItemService.filter(userId, filter));
+        return "wardrobe-items";
+    }
 }

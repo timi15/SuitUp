@@ -23,6 +23,93 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Ruhadarabjaim</h1>
 
+    <form action="/wardrobe-items/filter" method="get" class="mb-4">
+
+        <div class="row g-3">
+
+            <div class="col-md-2">
+                <select name="type" class="form-select">
+                    <option value="">Típus</option>
+                    <option value="felső">Felső</option>
+                    <option value="nadrág/szoknya">Nadrág/Szoknya</option>
+                    <option value="egyrészes">Egyrészes</option>
+                    <option value="kabát">Kabát</option>
+                    <option value="cipő">Cipő</option>
+                    <option value="kiegészítő">Kiegészítő</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="season" class="form-select">
+                    <option value="">Évszak</option>
+                    <option value="téli">Téli</option>
+                    <option value="tavaszi">Tavaszi</option>
+                    <option value="nyári">Nyári</option>
+                    <option value="őszi">Őszi</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="color" class="form-select">
+                    <option value="">Szín</option>
+                    <option value="piros">Piros</option>
+                    <option value="kék">Kék</option>
+                    <option value="lila">Lila</option>
+                    <option value="rózsaszín">Rózsaszín</option>
+                    <option value="zöld">Zöld</option>
+                    <option value="fehér">Fehér</option>
+                    <option value="fekete">Fekete</option>
+                    <option value="szürke">Szürke</option>
+                    <option value="sárga">Sárga</option>
+                    <option value="narancssárga">Narancssárga</option>
+                    <option value="bézs">Bézs</option>
+                    <option value="barna">Barna</option>
+                    <option value="arany">Arany</option>
+                    <option value="ezüst">Ezüst</option>
+                    <option value="bordó">Bordó</option>
+                    <option value="khaki">Khaki</option>
+                    <option value="mustársárga">Mustársárga</option>
+                    <option value="színes">Színes</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="brand" class="form-select">
+                    <option value="">Márka</option>
+                    <option value="Nike">Nike</option>
+                    <option value="Adidas">Adidas</option>
+                    <option value="Puma">Puma</option>
+                    <option value="Zara">Zara</option>
+                    <option value="H&M">H&M</option>
+                    <option value="Tommy Hilfiger">Tommy Hilfiger</option>
+                    <option value="Levi's">Levi's</option>
+                    <option value="Guess">Guess</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <select name="material" class="form-select">
+                    <option value="">Anyag</option>
+                    <option value="pamut">Pamut</option>
+                    <option value="farmer">Farmer</option>
+                    <option value="bőr">Bőr</option>
+                    <option value="műbőr">Műbőr</option>
+                    <option value="szatén">Szatén</option>
+                    <option value="velúr">Velúr</option>
+                    <option value="lenvászon">Lenvászon</option>
+                    <option value="csipke">Csipke</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">Szűrés</button>
+            </div>
+
+        </div>
+    </form>
+
+
+
     <div class="alert mt-3 text-center" th:if="${#lists.isEmpty(wardrobeItems)}">
 
         <p class="mb-3 fs-5">Nincs elérhető ruhadarab.</p>

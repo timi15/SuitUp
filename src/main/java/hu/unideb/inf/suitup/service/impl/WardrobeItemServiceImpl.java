@@ -1,5 +1,6 @@
 package hu.unideb.inf.suitup.service.impl;
 
+import hu.unideb.inf.suitup.dto.WardrobeItemFilter;
 import hu.unideb.inf.suitup.entity.OutfitEntity;
 import hu.unideb.inf.suitup.entity.UserEntity;
 import hu.unideb.inf.suitup.entity.WardrobeItemEntity;
@@ -7,6 +8,7 @@ import hu.unideb.inf.suitup.repository.OutfitRepository;
 import hu.unideb.inf.suitup.repository.UserRepository;
 import hu.unideb.inf.suitup.repository.WardrobeItemRepository;
 import hu.unideb.inf.suitup.service.WardrobeItemService;
+import hu.unideb.inf.suitup.specification.WardrobeItemSpecification;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -92,5 +94,12 @@ public class WardrobeItemServiceImpl implements WardrobeItemService {
     @Override
     public List<WardrobeItemEntity> findBySeason(Long userId, String season) {
         return wardrobeItemRepository.findByUserIdAndSeason(userId, season);
+    }
+
+    @Override
+    public List<WardrobeItemEntity> filter(Long userId, WardrobeItemFilter filter) {
+        return wardrobeItemRepository.findAll(
+                WardrobeItemSpecification.filter(userId, filter)
+        );
     }
 }
