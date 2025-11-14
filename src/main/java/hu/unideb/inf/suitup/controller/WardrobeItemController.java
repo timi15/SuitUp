@@ -1,6 +1,7 @@
 package hu.unideb.inf.suitup.controller;
 
 import hu.unideb.inf.suitup.dto.WardrobeItemFilter;
+import hu.unideb.inf.suitup.entity.OutfitEntity;
 import hu.unideb.inf.suitup.entity.WardrobeItemEntity;
 import hu.unideb.inf.suitup.service.UserService;
 import hu.unideb.inf.suitup.service.WardrobeItemService;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,6 +25,9 @@ public class WardrobeItemController {
     @GetMapping("")
     public String wardrobeItemsPage(Model model) {
         Long userId = userService.getCurrentUserId();
+        List<WardrobeItemEntity> items = wardrobeItemService.findAll(userId);
+        items.forEach(WardrobeItemEntity::prepareTopicList);
+
         model.addAttribute("wardrobeItems", wardrobeItemService.findAll(userId));
         return "wardrobe-items";
     }

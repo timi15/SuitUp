@@ -144,6 +144,11 @@
                         <span class="badge" th:text="${item.material}"></span>
                     </p>
 
+                    <span th:if="${item.topicList != null && !#lists.isEmpty(item.topicList)}"
+                          class="d-flex flex-wrap gap-2" style="max-width: 100%;">
+                        <span class="badge topic" th:each="topic : ${item.topicList}" th:text="${topic}"></span>
+                    </span>
+
                 </div>
 
                 <div class="card-footer d-flex justify-content-between">

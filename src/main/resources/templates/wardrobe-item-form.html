@@ -44,6 +44,17 @@
 
                 <div class="invalid-feedback">Kötelező linket megadni!</div>
 
+                <div>
+                    <label for="tagInput" class="form-label text-start w-100">Egyedi címke megadása (double space a
+                        hozzáadáshoz)</label>
+                    <div id="tagContainer" class="form-control d-flex flex-wrap gap-2 align-items-center"
+                         style="min-height: 45px; padding-bottom: 0 !important;">
+                        <input id="tagInput" type="text" class="border-0 flex-grow-1 form-control"
+                               style="margin-bottom: 0.4em !important;" placeholder="Írj ide...">
+                    </div>
+                    <input type="hidden" id="hiddenTopics" name="topics">
+                </div>
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <select title="Kötelező választani!" id="type" th:field="*{type}" class="form-select" required>
@@ -171,6 +182,7 @@
     </form>
 </div>
 
+<script th:src="@{/js/topics-input.js}"></script>
 <script th:src="@{/js/validation.js}"></script>
 <script th:src="@{/js/image-preview.js}"></script>
 <script th:src="@{/js/logout-confirmation.js}"></script>

@@ -59,6 +59,12 @@ img:not(.forecast-icon, .weather-icon) {
 }
 
 .btn {
-    height: 3em;
+    height: 3em !important;
     border-radius: 15px;
+}
+
+.topic {
+    border: #6F1A07 solid 2px;
+    background-color: #B3B6B7;
+    color: #4D1E10;
 }

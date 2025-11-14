@@ -128,6 +128,8 @@ h4 {
 }
 
 .badge-custom {
+    font-size: 1em !important;
+    height: 3em;
     border: #6F1A07 solid 2px;
     background-color: #B3B6B7;
     color: #4D1E10;
@@ -135,4 +137,10 @@ h4 {
 
 .btn-close {
     background-color: #F7F3E3 !important;
+    height: 1.5em !important;
+    border-radius: 10px !important;
+}
+
+.btn-close:hover {
+    border: #6F1A07 solid 2px;
 }
