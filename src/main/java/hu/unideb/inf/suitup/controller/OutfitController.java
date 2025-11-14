@@ -91,8 +91,15 @@ public class OutfitController {
         Long userId = userService.getCurrentUserId();
         List<OutfitEntity> outfits = outfitService.filter(userId, filter);
 
+        outfits.forEach(OutfitEntity::prepareTopicList);
+
+        Set<String> uniqueTopics = outfits.stream()
+                .flatMap(o -> o.getTopicList().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
         model.addAttribute("outfits", outfits);
         model.addAttribute("filter", filter);
+        model.addAttribute("uniqueTopics", uniqueTopics);
 
         return "outfits";
     }

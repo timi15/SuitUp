@@ -44,11 +44,11 @@
             </div>
 
             <div class="col-md-2">
-                <button class="btn btn-primary w-100">Szűrés</button>
+                <button class="btn w-100">Szűrés</button>
             </div>
 
             <div class="col-md-2">
-                <a href="/outfits" class="btn btn-secondary w-100">Szűrés törlése</a>
+                <a href="/outfits" class="btn w-100 btn-link">Szűrés törlése</a>
             </div>
 
         </div>
@@ -71,7 +71,7 @@
     </div>
 
     <div class="row g-4">
-        <div class="col-md-4" th:each="outfit : ${outfits}">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 outfit-card" th:each="outfit : ${outfits}">
             <div class="card shadow-sm">
 
                 <div class="card-body">
@@ -158,7 +158,7 @@
         btn.addEventListener("click", (e) => {
             const selectedTopic = btn.textContent.trim().toLowerCase();
 
-            document.querySelectorAll(".col-md-4").forEach(card => {
+            document.querySelectorAll(".outfit-card").forEach(card => {
 
                 const badges = card.querySelectorAll(".badge.topic");
 

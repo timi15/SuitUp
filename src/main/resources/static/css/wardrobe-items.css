@@ -57,3 +57,8 @@ img:not(.forecast-icon, .weather-icon) {
 .plus:hover {
     color: #4D1E10;
 }
+
+.btn {
+    height: 3em;
+    border-radius: 15px;
+}

@@ -1,6 +1,7 @@
 @import "navbar.css";
 @import "base.css";
 @import "card.css";
+@import "form.css";
 
 img {
     margin-right: 0.6em;
@@ -74,8 +75,8 @@ img {
     color: #4D1E10;
 }
 
-.topic-sum {
-    margin: 0 0.5em 5em 0;
+.topic-sum, #showAll {
+    margin: 1em 0.5em 4em 0;
 }
 
 .topic-sum:hover {
@@ -94,4 +95,13 @@ h1 {
 
 #showAll {
     border: #6F1A07 solid 2px;
+}
+
+.btn {
+    height: 3em;
+    border-radius: 15px;
+}
+
+.btn-link {
+    padding: 0.6em !important;
 }
