@@ -5,7 +5,8 @@
         <input type="hidden" id="csrfToken" th:value="${_csrf.token}">
 
         <p class="d-inline-flex">
-            <button class="btn btn-primary weather-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWeather">
+            <button class="btn btn-primary weather-btn" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWeather">
                 <i class="bi bi-cloud-sun fs-3"></i>
             </button>
         </p>
@@ -39,7 +40,7 @@
                     <li><a href="/home">Vissza a főoldalra</a></li>
                     <li>
                         <form th:action="@{/auth/logout}" method="post" class="logout" style="display: inline;">
-                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                             <button type="submit">Kijelentkezés</button>
                         </form>
                     </li>

@@ -14,7 +14,7 @@
     margin-left: auto;
 }
 
-.weather-widget .icon-info-container{
+.weather-widget .icon-info-container {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -42,7 +42,7 @@
     color: #4D1E10;
 }
 
-.weather-widget .current-date{
+.weather-widget .current-date {
     font-size: 0.9rem;
     color: #6F1A07;
 }

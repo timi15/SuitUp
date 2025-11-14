@@ -6,7 +6,7 @@ import hu.unideb.inf.suitup.entity.OutfitEntity;
 import java.util.List;
 
 public interface OutfitService {
-    OutfitEntity save( Long userId,
+    OutfitEntity save(Long userId,
                       OutfitEntity outfit,
                       Long topId,
                       Long pantsId,

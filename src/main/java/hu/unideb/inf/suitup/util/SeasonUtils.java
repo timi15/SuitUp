@@ -6,13 +6,13 @@ import java.time.Month;
 public class SeasonUtils {
 
     public static String getCurrentSeason() {
-        Month month= LocalDate.now().getMonth();
+        Month month = LocalDate.now().getMonth();
 
-        return switch (month){
-            case DECEMBER,JANUARY,FEBRUARY ->"téli";
-            case MARCH,APRIL,MAY ->"tavaszi";
-            case JUNE,JULY,AUGUST ->"nyári";
-            case SEPTEMBER,OCTOBER,NOVEMBER ->"őszi";
+        return switch (month) {
+            case DECEMBER, JANUARY, FEBRUARY -> "téli";
+            case MARCH, APRIL, MAY -> "tavaszi";
+            case JUNE, JULY, AUGUST -> "nyári";
+            case SEPTEMBER, OCTOBER, NOVEMBER -> "őszi";
         };
     }
 }

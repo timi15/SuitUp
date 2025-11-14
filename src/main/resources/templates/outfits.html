@@ -29,8 +29,8 @@
 
             <div class="col-md-4">
                 <input type="text" name="title" class="form-control"
-                    placeholder="Név szerint..." 
-                    th:value="${filter?.title}">
+                       placeholder="Név szerint..."
+                       th:value="${filter?.title}">
             </div>
 
             <div class="col-md-4">
@@ -100,13 +100,15 @@
 
                             <div class="d-flex flex-column justify-content-center">
 
-                                <span class="date fw-semibold" th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
+                                <span class="date fw-semibold"
+                                      th:text="${#temporals.format(outfit.createdAt, 'yyyy.MM.dd')}"></span>
 
                                 <span class="badge" th:text="${outfit.season}"></span>
 
                                 <span th:if="${outfit.topicList != null && !#lists.isEmpty(outfit.topicList)}"
-                                     class="d-flex flex-wrap gap-2" style="max-width: 100%;">
-                                    <span class="badge topic" th:each="topic : ${outfit.topicList}" th:text="${topic}"></span>
+                                      class="d-flex flex-wrap gap-2" style="max-width: 100%;">
+                                    <span class="badge topic" th:each="topic : ${outfit.topicList}"
+                                          th:text="${topic}"></span>
                                 </span>
                             </div>
                         </div>
@@ -177,8 +179,7 @@
 
                 if (match) {
                     card.style.display = "";
-                }
-                else {
+                } else {
                     card.style.display = "none";
                 }
             })

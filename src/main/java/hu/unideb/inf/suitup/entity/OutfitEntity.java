@@ -12,7 +12,8 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 @Builder
 @Entity
 @Table(name = "outfits")
@@ -44,7 +45,7 @@ public class OutfitEntity {
     @ManyToMany
     @JoinTable(
             joinColumns = @JoinColumn(name = "outfit_id"),
-            inverseJoinColumns = @JoinColumn(name ="wardrobe_id")
+            inverseJoinColumns = @JoinColumn(name = "wardrobe_id")
     )
     private List<WardrobeItemEntity> wardrobeItems;
 

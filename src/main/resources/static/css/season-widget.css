@@ -21,7 +21,7 @@
     position: absolute;
     /*kep merete*/
     width: clamp(150px, 20vw, 250px);
-    height:  clamp(150px, 30vw, 400px);
+    height: clamp(150px, 30vw, 400px);
     top: 30%;
     left: calc(50% - 100px);
     transform-style: preserve-3d;
@@ -43,9 +43,7 @@
 .banner .slider .item {
     position: absolute;
     inset: 0;
-    transform:
-            rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(clamp(400px, 25vw, 300px));
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(clamp(400px, 25vw, 300px));
 }
 
 .banner .slider .item img {

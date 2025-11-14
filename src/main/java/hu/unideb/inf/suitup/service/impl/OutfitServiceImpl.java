@@ -88,9 +88,9 @@ public class OutfitServiceImpl implements OutfitService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found: " + userId));
 
         Specification<OutfitEntity> spec = Specification
-        .where(OutfitSpecification.belongsToUser(user))
-        .and(OutfitSpecification.titleContains(filter.getTitle()))
-        .and(OutfitSpecification.seasonEquals(filter.getSeason()));
+                .where(OutfitSpecification.belongsToUser(user))
+                .and(OutfitSpecification.titleContains(filter.getTitle()))
+                .and(OutfitSpecification.seasonEquals(filter.getSeason()));
 
 
         return outfitRepository.findAll(spec);

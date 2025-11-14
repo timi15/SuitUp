@@ -108,19 +108,20 @@ h4 {
     margin-bottom: 3em;
 }
 
-.outfit-header{
-    display:  flex;
+.outfit-header {
+    display: flex;
     flex-wrap: wrap;
 }
 
-@media  (max-width: 1000px) {
-    .outfit-header{
-        display:  flex;
+@media (max-width: 1000px) {
+    .outfit-header {
+        display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         align-content: center;
     }
-    .outfit-header > *{
+
+    .outfit-header > * {
         width: 60%;
     }
 

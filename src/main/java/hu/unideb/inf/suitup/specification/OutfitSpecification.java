@@ -21,7 +21,7 @@ public class OutfitSpecification {
         };
     }
 
-    public static Specification<OutfitEntity> belongsToUser(UserEntity user){
+    public static Specification<OutfitEntity> belongsToUser(UserEntity user) {
         return (root, query, cb) -> cb.equal(root.get("user"), user);
     }
 }

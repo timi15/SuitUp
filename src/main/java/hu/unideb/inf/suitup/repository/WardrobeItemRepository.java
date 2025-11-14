@@ -17,14 +17,14 @@ public interface WardrobeItemRepository extends JpaRepository<WardrobeItemEntity
     List<WardrobeItemEntity> findByUserIdAndType(Long userId, String type);
 
     @Query(value = """
-        SELECT wi.*
-        FROM outfits_wardrobe_items owi
-                 INNER JOIN wardrobe_items wi ON wi.id = owi.wardrobe_id
-        WHERE wi.user_id = :user
-        GROUP BY wi.id
-        ORDER BY COUNT(owi.wardrobe_id) DESC
-        LIMIT 10
-        """, nativeQuery = true)
+            SELECT wi.*
+            FROM outfits_wardrobe_items owi
+                     INNER JOIN wardrobe_items wi ON wi.id = owi.wardrobe_id
+            WHERE wi.user_id = :user
+            GROUP BY wi.id
+            ORDER BY COUNT(owi.wardrobe_id) DESC
+            LIMIT 10
+            """, nativeQuery = true)
     List<WardrobeItemEntity> findFavouriteWardrobeItems(@Param("user") Long userId);
 
     List<WardrobeItemEntity> findByUserIdAndSeason(Long userId, String season);

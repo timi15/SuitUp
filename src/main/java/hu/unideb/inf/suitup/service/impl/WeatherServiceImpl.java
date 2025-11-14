@@ -5,7 +5,6 @@ import hu.unideb.inf.suitup.dto.WeatherDto;
 import hu.unideb.inf.suitup.dto.WeatherForecastDto;
 import hu.unideb.inf.suitup.service.WeatherService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class WeatherServiceImpl implements WeatherService {
-    private final RestTemplate restTemplate=new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     @Value("${weather.latitude}")
     private double latitude;
@@ -86,7 +85,7 @@ public class WeatherServiceImpl implements WeatherService {
         List<Integer> codes = (List<Integer>) hourly.get("weathercode");
 
         List<WeatherForecastDto> forecast = new ArrayList<>();
-        for (int i = 0; i < times.size(); i+=4) {
+        for (int i = 0; i < times.size(); i += 4) {
             String iconUrl = getWeatherIcon(codes.get(i));
             forecast.add(new WeatherForecastDto(times.get(i), temps.get(i).intValue(), iconUrl));
         }

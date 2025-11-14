@@ -28,11 +28,11 @@
 
     <h2 th:text="${currentSeason} + ' ruhadarabjaid'" style="text-align: center"></h2>
 
-    <div class="alert mt-3 text-center"  th:if="${#lists.isEmpty(seasonalItems)}">
+    <div class="alert mt-3 text-center" th:if="${#lists.isEmpty(seasonalItems)}">
         <p class="mb-3 fs-5" th:text="'Jelenleg nincs '+  ${currentSeason} + ' ruhadarabod.'">Jelenleg nincs kedvenc
             ruhadarabod.</p>
 
-        <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary" >
+        <a th:href="@{/wardrobe-items/save}" class="btn btn-outline-primary">
             <i class="bi bi-plus-circle me-2"></i>
             Ruhadarab hozzáadása
         </a>
@@ -42,7 +42,8 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide" th:each="item : ${seasonalItems}">
                 <a th:href="@{/outfits/save(selectedId=${item.id}, type=${item.type})}">
-                    <img title="Kattints a képre, és készíts vele outfitet!" th:src="${item.imageUrl}" th:alt="${item.type}" class="zoom"
+                    <img title="Kattints a képre, és készíts vele outfitet!" th:src="${item.imageUrl}"
+                         th:alt="${item.type}" class="zoom"
                          style="width: auto; height: 10rem; min-width: 15rem; max-width: 15rem; object-fit: contain;">
                 </a>
             </div>

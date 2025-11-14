@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface WeatherService {
     WeatherDto getCurrentWeather();
+
     List<WeatherForecastDto> getHourlyForecast();
 }

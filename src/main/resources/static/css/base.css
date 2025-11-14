@@ -23,7 +23,7 @@ h1 {
     border-radius: 15px;
 }
 
-.btn:hover, .btn:active, .btn:focus  {
+.btn:hover, .btn:active, .btn:focus {
     background-color: #F7F3E3 !important;
     border: #6F1A07 solid !important;
     color: #4D1E10 !important;

@@ -22,30 +22,30 @@ public class WardrobeItemSpecification {
     private static Specification<WardrobeItemEntity> hasType(String type) {
         return (root, query, builder) ->
                 type == null || type.isEmpty() ? null :
-                builder.equal(root.get("type"), type);
+                        builder.equal(root.get("type"), type);
     }
 
     private static Specification<WardrobeItemEntity> hasSeason(String season) {
         return (root, query, builder) ->
                 season == null || season.isEmpty() ? null :
-                builder.equal(root.get("season"), season);
+                        builder.equal(root.get("season"), season);
     }
 
     private static Specification<WardrobeItemEntity> hasColor(String color) {
         return (root, query, builder) ->
                 color == null || color.isEmpty() ? null :
-                builder.equal(root.get("color"), color);
+                        builder.equal(root.get("color"), color);
     }
 
     private static Specification<WardrobeItemEntity> hasBrand(String brand) {
         return (root, query, builder) ->
                 brand == null || brand.isEmpty() ? null :
-                builder.equal(root.get("brand"), brand);
+                        builder.equal(root.get("brand"), brand);
     }
 
     private static Specification<WardrobeItemEntity> hasMaterial(String material) {
         return (root, query, builder) ->
                 material == null || material.isEmpty() ? null :
-                builder.equal(root.get("material"), material);
+                        builder.equal(root.get("material"), material);
     }
 }

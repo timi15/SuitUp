@@ -1,4 +1,4 @@
-.full-weather-widget{
+.full-weather-widget {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -7,8 +7,8 @@
     margin: 1rem;
 }
 
-.weather-widget{
-    margin:0;
+.weather-widget {
+    margin: 0;
 }
 
 .forecast-container {
