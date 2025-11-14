@@ -71,7 +71,7 @@
     </div>
 
     <div class="row g-4">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 outfit-card" th:each="outfit : ${outfits}">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 whole-card" th:each="outfit : ${outfits}">
             <div class="card shadow-sm">
 
                 <div class="card-body">
@@ -155,43 +155,7 @@
     </div>
 </div>
 
-<script>
-    document.querySelectorAll(".topic-sum").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            const selectedTopic = btn.textContent.trim().toLowerCase();
-
-            document.querySelectorAll(".outfit-card").forEach(card => {
-
-                const badges = card.querySelectorAll(".badge.topic");
-
-                if (badges.length === 0) {
-                    card.style.display = "none";
-                    return;
-                }
-
-                let match = false;
-                badges.forEach(badge => {
-                    const topicText = badge.textContent.trim().toLowerCase();
-                    if (topicText === selectedTopic) {
-                        match = true;
-                    }
-                });
-
-                if (match) {
-                    card.style.display = "";
-                } else {
-                    card.style.display = "none";
-                }
-            })
-        })
-    })
-
-    const showAll = document.getElementById("showAll");
-    showAll.addEventListener("click", (e) => {
-        window.location.reload();
-    })
-</script>
-
+<script th:src="@{/js/topic-filter.js}"></script>
 <script th:src="@{/js/delete-confirmation.js}"></script>
 <script th:src="@{/js/logout-confirmation.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
