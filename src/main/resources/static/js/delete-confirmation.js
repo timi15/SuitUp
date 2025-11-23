@@ -4,7 +4,6 @@ function confirmDelete(id, element) {
         color: "#4D1E10",
         title: 'Biztosan törlöd?',
         text: 'Ez a művelet visszavonhatatlan!',
-        iconColor: "#4D1E10",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: "#6F1A07",
