@@ -95,7 +95,7 @@ form {
 }
 
 h1 {
-    padding-bottom: 1em;
+    padding-top: 0.5em;
 }
 
 h4 {
@@ -106,4 +106,41 @@ h4 {
 
 .carousel-grid {
     margin-bottom: 3em;
+}
+
+.outfit-header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+    .outfit-header {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .outfit-header > * {
+        width: 60%;
+    }
+
+}
+
+.badge-custom {
+    font-size: 1em !important;
+    height: 3em;
+    border: #6F1A07 solid 2px;
+    background-color: #B3B6B7;
+    color: #4D1E10;
+}
+
+.btn-close {
+    background-color: #F7F3E3 !important;
+    height: 1.5em !important;
+    border-radius: 10px !important;
+}
+
+.btn-close:hover {
+    border: #6F1A07 solid 2px;
 }

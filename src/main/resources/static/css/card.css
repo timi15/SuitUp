@@ -3,7 +3,7 @@
 }
 
 .card {
-    background-color: #F7F3E3;
+    background-color: rgba(179, 182, 183, 0.5);
     border: #6F1A07 solid;
     border-radius: 15px;
     margin: 0 auto;

@@ -1,5 +1,6 @@
 package hu.unideb.inf.suitup.controller;
 
+import hu.unideb.inf.suitup.dto.OutfitFilter;
 import hu.unideb.inf.suitup.entity.OutfitEntity;
 import hu.unideb.inf.suitup.service.OutfitService;
 import hu.unideb.inf.suitup.service.UserService;
@@ -8,6 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("outfits")
@@ -21,7 +27,16 @@ public class OutfitController {
     @GetMapping("")
     public String showOutfitsPage(Model model) {
         Long userId = userService.getCurrentUserId();
+        List<OutfitEntity> outfits = outfitService.findAll(userId);
+        outfits.forEach(OutfitEntity::prepareTopicList);
+
+        Set<String> uniqueTopics = outfits.stream()
+                .flatMap(o -> o.getTopicList().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
         model.addAttribute("outfits", outfitService.findAll(userId));
+        model.addAttribute("uniqueTopics", uniqueTopics);
+
         return "outfits";
     }
 
@@ -61,5 +76,31 @@ public class OutfitController {
         Long userId = userService.getCurrentUserId();
         outfitService.deleteById(userId, id);
         return "redirect:/outfits";
+    }
+
+    @GetMapping("/filter")
+    public String filterOutfits(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String season,
+            Model model
+    ) {
+        OutfitFilter filter = new OutfitFilter();
+        filter.setTitle(title);
+        filter.setSeason(season);
+
+        Long userId = userService.getCurrentUserId();
+        List<OutfitEntity> outfits = outfitService.filter(userId, filter);
+
+        outfits.forEach(OutfitEntity::prepareTopicList);
+
+        Set<String> uniqueTopics = outfits.stream()
+                .flatMap(o -> o.getTopicList().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
+        model.addAttribute("outfits", outfits);
+        model.addAttribute("filter", filter);
+        model.addAttribute("uniqueTopics", uniqueTopics);
+
+        return "outfits";
     }
 }

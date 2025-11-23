@@ -1,0 +1,9 @@
+<div th:fragment="weather-forecast-widget">
+    <div class="forecast-container">
+        <div th:each="item : ${forecast}" class="forecast-hour">
+            <span class="time" th:text="${#strings.substring(item.time, 11, 16)}"></span>
+            <img class="forecast-icon" th:src="@{${item.iconUrl}}" alt="icon">
+            <span class="temp" th:text="${item.temperature} + '°C'"></span>
+        </div>
+    </div>
+</div>

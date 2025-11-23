@@ -5,12 +5,15 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 @Builder
 @Entity
 @Table(name = "outfits")
@@ -32,6 +35,9 @@ public class OutfitEntity {
     @Column(name = "image_url", nullable = false, columnDefinition = "TEXT")
     private String imageUrl;
 
+    @Column(name = "topics", nullable = true, columnDefinition = "TEXT")
+    private String topics;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
@@ -39,7 +45,7 @@ public class OutfitEntity {
     @ManyToMany
     @JoinTable(
             joinColumns = @JoinColumn(name = "outfit_id"),
-            inverseJoinColumns = @JoinColumn(name ="wardrobe_id")
+            inverseJoinColumns = @JoinColumn(name = "wardrobe_id")
     )
     private List<WardrobeItemEntity> wardrobeItems;
 
@@ -54,5 +60,16 @@ public class OutfitEntity {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    @Transient
+    private List<String> topicList;
+
+    public void prepareTopicList() {
+        if (this.topics != null && !this.topics.trim().isEmpty()) {
+            this.topicList = Arrays.asList(this.topics.trim().split("\\s+"));
+        } else {
+            this.topicList = Collections.emptyList();
+        }
     }
 }

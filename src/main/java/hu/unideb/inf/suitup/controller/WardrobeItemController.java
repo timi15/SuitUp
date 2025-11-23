@@ -1,5 +1,6 @@
 package hu.unideb.inf.suitup.controller;
 
+import hu.unideb.inf.suitup.dto.WardrobeItemFilter;
 import hu.unideb.inf.suitup.entity.WardrobeItemEntity;
 import hu.unideb.inf.suitup.service.UserService;
 import hu.unideb.inf.suitup.service.WardrobeItemService;
@@ -9,6 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,7 +27,16 @@ public class WardrobeItemController {
     @GetMapping("")
     public String wardrobeItemsPage(Model model) {
         Long userId = userService.getCurrentUserId();
+        List<WardrobeItemEntity> items = wardrobeItemService.findAll(userId);
+        items.forEach(WardrobeItemEntity::prepareTopicList);
+
+        Set<String> uniqueTopics = items.stream()
+                .flatMap(o -> o.getTopicList().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
         model.addAttribute("wardrobeItems", wardrobeItemService.findAll(userId));
+        model.addAttribute("uniqueTopics", uniqueTopics);
+
         return "wardrobe-items";
     }
 
@@ -74,4 +89,21 @@ public class WardrobeItemController {
         return "redirect:/wardrobe-items";
     }
 
+    @GetMapping("/filter")
+    public String filterWardrobeItems(
+            @ModelAttribute("filter") WardrobeItemFilter filter,
+            Model model
+    ) {
+        Long userId = userService.getCurrentUserId();
+        List<WardrobeItemEntity> items = wardrobeItemService.findAll(userId);
+        items.forEach(WardrobeItemEntity::prepareTopicList);
+
+        Set<String> uniqueTopics = items.stream()
+                .flatMap(o -> o.getTopicList().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
+        model.addAttribute("wardrobeItems", wardrobeItemService.filter(userId, filter));
+        model.addAttribute("uniqueTopics", uniqueTopics);
+        return "wardrobe-items";
+    }
 }

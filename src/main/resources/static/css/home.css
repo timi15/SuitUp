@@ -1,0 +1,46 @@
+@import "base.css";
+@import "navbar.css";
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-pagination-bullet {
+    background: #4D1E10 !important;
+}
+
+.mySwiper {
+    padding-bottom: 40px;
+}
+
+.swiper-pagination {
+    bottom: 10px !important;
+}
+
+.container {
+    margin-top: 2em;
+}
+
+h2 {
+    text-transform: capitalize;
+    padding-bottom: 1em;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.btn {
+    width: 48%;
+    border: #6F1A07 solid;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    padding-top: 0.5em;
+}

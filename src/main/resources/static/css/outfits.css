@@ -1,6 +1,7 @@
 @import "navbar.css";
 @import "base.css";
 @import "card.css";
+@import "form.css";
 
 img {
     margin-right: 0.6em;
@@ -19,14 +20,96 @@ img {
     font-size: 1.1em;
 }
 
-.card {
-    height: 42rem;
-}
-
 .carousel-item {
     transition: transform 2s ease-in-out;
 }
 
 .delete-btn {
     width: 100%;
+}
+
+.badge {
+    margin-top: 1em;
+}
+
+.card {
+    max-width: 22rem;
+    min-height: 675px;
+}
+
+.btn {
+    width: 48%;
+}
+
+/* Modal */
+
+.modal-content {
+    background: #F7F3E3;
+    border: none;
+}
+
+.modal-header {
+    background: #6F1A07;
+    color: #F7F3E3;
+    border: none;
+    text-transform: capitalize;
+}
+
+@media (max-width: 576px) {
+    .d-flex.flex-wrap img {
+        max-width: 100%;
+    }
+
+    .d-flex.flex-wrap .text-center {
+        width: 100%;
+    }
+}
+
+.badge {
+    margin-bottom: 0;
+}
+
+.topic, .topic-sum {
+    border: #6F1A07 solid 2px;
+    background-color: #B3B6B7;
+    color: #4D1E10;
+}
+
+.topic-sum, #showAll {
+    margin: 1em 0.5em 4em 0;
+}
+
+.topic-sum:hover {
+    background-color: #6F1A07;
+    color: #F7F3E3;
+}
+
+.topic-sum:active, .topic-sum:focus {
+    background-color: #4D1E10;
+    color: #F7F3E3;
+}
+
+h1 {
+    padding-bottom: 0.5em !important;
+}
+
+#showAll {
+    border: #6F1A07 solid 2px;
+}
+
+.btn {
+    height: 3em;
+    border-radius: 15px;
+}
+
+.btn-link {
+    padding: 0.6em !important;
+}
+
+.badge {
+    margin-bottom: 0.75em;
+}
+
+.topic {
+    margin: 0 0 0.25em 0;
 }
